@@ -1,6 +1,6 @@
-var Models = require('../models')
+var Models = require('../../models')
 ,	User = Models.User
-,	helpers = require('../helpers');
+,	helpers = require('../../helpers');
 
 /*
  * GET users listing.

@@ -4,14 +4,16 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , project = require('./routes/project')
+  , routes = require('./routes/web')
+  , user = require('./routes/api/user')
+  , topic = require('./routes/api/topic')
   , http = require('http')
   , path = require('path');
 
-var app = express();
+// read environment
 
+// app configuration
+var app = express();
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -23,7 +25,6 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
-
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
@@ -33,7 +34,8 @@ app.get('/', routes.index);
 
 // api routes
 app.get('/api/users', user.list);
-app.get('/api/projects', project.list);
+app.get('/api/topics', topic.list);
+app.get('/api/activity', topic.activity);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){

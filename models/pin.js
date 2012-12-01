@@ -13,7 +13,8 @@ var mongoose = require('mongoose')
 
 var PinSchema = new Schema({
 
-	title: { type: String },
+	author: { type: Schema.ObjectId, ref: 'User', required: true },
+	title: { type: String, required: true },
 	url: { type: String },
 	picture: { type: String },
 	tags: [{ type: String, indexed: true }],

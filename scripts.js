@@ -1,6 +1,6 @@
 var Models = require('./models')
 ,	User = Models.User
-,	Project = Models.Project
+,	Topic = Models.Topic
 ,	Pin = Models.Pin
 ,	Annotation = Models.Annotation;
 
@@ -28,11 +28,12 @@ var Models = require('./models')
 ///////////////////////
 
 // var project = new Project;
-// project.label = "label 1";
+// project.label = "Our third project";
 // project.logo = "http://mongoosejs.com/docs/images/apps/h_mcds.png";
 // project.color = "#fefefe";
-// project.tags.push('cool');
-// project.tags.push('beans');
+// project.author = '50b93b2e00b62ab60c000001';
+// project.tags.addToSet('digi');
+// project.tags.addToSet('flare');
 // project.save(function(err, saved) {
 // 	if(err) console.log(err);
 // 	else {
@@ -40,7 +41,6 @@ var Models = require('./models')
 // 		console.log(saved);
 // 	}
 // });
-
 
 
 /////////////////////////////
@@ -62,23 +62,24 @@ var Models = require('./models')
 // test adding pin to project //
 ////////////////////////////////
 
-// Project.findById('50ba4362c5c224a203000003', function(err, project) {
-// 	if(err)	console.log(err);
-// 	else {
-// 		var pin = new Pin();
-// 		pin.title = "My first pin";
-// 		pin.url = "http://www.google.com";
-// 		pin.picture = "https://www.google.ca/images/srpr/logo3w.png";
-// 		project.pins.push(pin);
-// 		project.save(function(err, saved) {
-// 			if(err) console.log(err);
-// 			else {
-// 				console.log('project saved');
-// 				console.log(saved);
-// 			}
-// 		});
-// 	}
-// });
+Topic.findById('50ba7a453a3d130c08000003', function(err, topic) {
+	if(err)	console.log(err);
+	else {
+		var pin = new Pin();
+		pin.author = '50b93b2e00b62ab60c000001';
+		pin.title = "Ya hoo";
+		pin.url = "http://www.yahoo.com";
+		pin.picture = "http://kara.allthingsd.com/files/2009/06/yahoo-purple-logojpg.jpeg";
+		topic.pins.push(pin);
+		topic.save(function(err, saved) {
+			if(err) console.log(err);
+			else {
+				console.log('topic saved');
+				console.log(saved);
+			}
+		});
+	}
+});
 
 
 ///////////////////////////

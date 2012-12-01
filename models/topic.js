@@ -1,6 +1,6 @@
-///////////////////
-// Project Model //
-///////////////////
+/////////////////
+// Topic Model //
+/////////////////
 
 var mongoose = require('mongoose')
 ,	Schema = mongoose.Schema
@@ -11,8 +11,9 @@ var mongoose = require('mongoose')
 // Schema //
 ////////////
 
-var ProjectSchema = new Schema({
+var TopicSchema = new Schema({
 
+	author: { type: Schema.ObjectId, ref: 'User', required: true },
 	label: { type: String, required: true },
 	logo: { type: String, required: true },
 	color: { type: String, required: true },
@@ -22,4 +23,4 @@ var ProjectSchema = new Schema({
 }, { strict: true });
 
 // export
-module.exports = ProjectSchema;
+module.exports = TopicSchema;
