@@ -36,4 +36,5 @@ mongoose.model('Region', RegionSchema);
 module.exports.User = mongoose.model('User');
 module.exports.Project = mongoose.model('Project');
 module.exports.Pin = mongoose.model('Pin');
-exports.Annotation = mongoose.model('Annotation');
+module.exports.Annotation = mongoose.model('Annotation');
+module.exports.Region = mongoose.model('Region');
