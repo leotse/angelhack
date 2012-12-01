@@ -1,9 +1,14 @@
+var Models = require('./models')
+,	User = Models.User
+,	Project = Models.Project
+,	Pin = Models.Pin
+,	Annotation = Models.Annotation;
+
+
+
 ////////////////////
 // test user save //
 ////////////////////
-
-//var Models = require('./models')
-// ,	User = Models.User;
 
 // var user = new User();
 // user.name = "Leo Tse";
@@ -21,9 +26,6 @@
 ///////////////////////
 // test project save //
 ///////////////////////
-
-// var Models = require('./models')
-// ,	Project = Models.Project;
 
 // var project = new Project;
 // project.label = "label 1";
@@ -45,9 +47,6 @@
 // test project tag filter //
 /////////////////////////////
 
-// var Models = require('./models')
-// ,	Project = Models.Project;
-
 // Project
 // .where('tags').all([ 'cool', 'beans' ])
 // .exec(function(err, projects) {
@@ -63,10 +62,6 @@
 // test adding pin to project //
 ////////////////////////////////
 
-// var Models = require('./models')
-// ,	Project = Models.Project
-// ,	Pin = Models.Pin;
-
 // Project.findById('50ba4362c5c224a203000003', function(err, project) {
 // 	if(err)	console.log(err);
 // 	else {
@@ -80,6 +75,33 @@
 // 			else {
 // 				console.log('project saved');
 // 				console.log(saved);
+// 			}
+// 		});
+// 	}
+// });
+
+
+///////////////////////////
+// test annotation a pin //
+///////////////////////////
+
+// Project.findById('50ba4362c5c224a203000003', function(err, project) {
+// 	if(err) console.log(err);
+// 	else {
+// 		var pin = project.pins[0];
+// 		pin.tags.addToSet('google');
+// 		pin.tags.addToSet('web');
+
+// 		var annotation = new Annotation();
+// 		annotation.comment = "Love the logo!";
+// 		annotation.author = '50b93b2e00b62ab60c000001';
+// 		pin.annotations.push(annotation);
+
+// 		project.save(function(err, saved) {
+// 			if(err) console.log(err);
+// 			else {
+// 				console.log('project saved');
+// 				console.log(saved.pins[0]);
 // 			}
 // 		});
 // 	}

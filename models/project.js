@@ -10,10 +10,20 @@ var mongoose = require('mongoose')
 // Schema //
 ////////////
 
+var RegionSchema = new Schema({
+
+	x: { type: Number },
+	y: { type: Number },
+	width: { type: Number },
+	height: { type: Number },
+
+}, { strict: true });
+
 var AnnotationSchema = new Schema({
 
 	comment: { type: String, required: true },
 	author: { type: Schema.ObjectId, ref: 'User', required: true },
+	region: [ RegionSchema ]
 
 }, { strict: true });
 
@@ -46,5 +56,7 @@ var ProjectSchema = new Schema({
 
 
 // register model
+mongoose.model('Region', RegionSchema);
+mongoose.model('Annotation', AnnotationSchema);
 mongoose.model('Pin', PinSchema);
 mongoose.model('Project', ProjectSchema);

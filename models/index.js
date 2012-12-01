@@ -23,3 +23,5 @@ require('./project');
 exports.User = mongoose.model('User');
 exports.Project = mongoose.model('Project');
 exports.Pin = mongoose.model('Pin');
+exports.Annotation = mongoose.model('Annotation');
+exports.Region = mongoose.model('Region');
