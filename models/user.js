@@ -16,6 +16,5 @@ var UserSchema = new Schema({
 	picture: { type: String }
 }, { strict: true });
 
-
-// register model
-mongoose.model('User', UserSchema);
+// export
+module.exports = UserSchema;
