@@ -16,7 +16,7 @@ Data.ModelFactory.CreateProjectModel = function(data){
 	});
 }
 
-Data.ModelFactory.CreateCategoryModel = function(data){
+Data.ModelFactory.CreateTopicModel = function(data){
 	return $.extend(data,{
 		
 	});
