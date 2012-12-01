@@ -1,6 +1,6 @@
-Namespace("DataService");
+Namespace("Data");
 
-DataService = (function(){
+Data.DataService = (function(){
 	
 	//CONSTANTS
 	var DATA_SERVICE_BASE = "http://www.something.com";

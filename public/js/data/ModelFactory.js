@@ -1,35 +1,41 @@
-Namespace("ModelFactory");
+Namespace("Data.ModelFactory");
 
-ModelFactory.GenerateRandomInteger = function() {
-	return Math.floor(Math.random() * 10000) + 100000;	 
+Data.ModelFactory.GenerateRandomInteger = function() {
+	return Math.floor(Math.random() * 10000) + 100000;
 }
 
-
-ModelFactory.CreateProject = function(data){
-	return {
-		Title: 'Title' ,
-    	personAge: ModelFactory.GenerateRandomInteger()
-	}
+Data.ModelFactory.CreateUserModel = function(data){
+	return $.extend(data,{
+		
+	});
 }
 
-ModelFactory.CreatePage = function(data){
-	return {
-		Title: 'Title' ,
-    	personAge: ModelFactory.GenerateRandomInteger()
-	}
+Data.ModelFactory.CreateProjectModel = function(data){
+	return $.extend(data,{
+		
+	});
 }
 
-ModelFactory.CreateAsset = function(data){
-	return {
-		Title: 'Title' ,
-    	personAge: ModelFactory.GenerateRandomInteger()
-	}
+Data.ModelFactory.CreateCategoryModel = function(data){
+	return $.extend(data,{
+		
+	});
 }
 
-ModelFactory.CreateVideoAsset = function(){
-	
+Data.ModelFactory.CreateBaseAsset = function(data){
+	return $.extend(data,{
+		
+	});
 }
 
-ModelFactory.CreateImageAsset = function(){
-	
+Data.ModelFactory.CreateVideoAsset = function(data){
+	return $.extend(Data.ModelFactory.CreateBaseAsset(data),{
+		
+	});
+}
+
+Data.ModelFactory.CreateImageAsset = function(data){
+	return $.extend(Data.ModelFactory.CreateBaseAsset(data),{
+		
+	});
 }
