@@ -85,24 +85,27 @@ var Models = require('./models')
 // test annotation a pin //
 ///////////////////////////
 
-// Project.findById('50ba4362c5c224a203000003', function(err, project) {
-// 	if(err) console.log(err);
-// 	else {
-// 		var pin = project.pins[0];
-// 		pin.tags.addToSet('google');
-// 		pin.tags.addToSet('web');
+Project.findById('50ba4362c5c224a203000003', function(err, project) {
+	if(err) console.log(err);
+	else {
+		var pin = project.pins[0];
+		pin.tags.addToSet('google');
+		pin.tags.addToSet('web');
 
-// 		var annotation = new Annotation();
-// 		annotation.comment = "Love the logo!";
-// 		annotation.author = '50b93b2e00b62ab60c000001';
-// 		pin.annotations.push(annotation);
+		var annotation = new Annotation();
+		annotation.comment = "Love the logo!";
+		annotation.author = '50b93b2e00b62ab60c000001';
+		pin.annotations.push(annotation);
 
-// 		project.save(function(err, saved) {
-// 			if(err) console.log(err);
-// 			else {
-// 				console.log('project saved');
-// 				console.log(saved.pins[0]);
-// 			}
-// 		});
-// 	}
-// });
+		project.save(function(err, saved) {
+			if(err) console.log(err);
+			else {
+				console.log('project saved');
+				console.log(saved.pins[0]);
+			}
+		});
+	}
+});
+
+
+
