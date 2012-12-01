@@ -36,9 +36,8 @@ app.get('/', routes.index);
 // api routes
 app.get('/api/users', user.list);
 app.get('/api/projects', project.list);
-app.get('/api/projects/:id', project.get);
+app.get('/api/activities', project.activity);
 app.get('/api/topics', topic.list);
-app.get('/api/activity', topic.activity);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){
