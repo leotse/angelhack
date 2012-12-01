@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes/web')
   , user = require('./routes/api/user')
+  , project = require('./routes/api/project')
   , topic = require('./routes/api/topic')
   , http = require('http')
   , path = require('path');
@@ -34,6 +35,8 @@ app.get('/', routes.index);
 
 // api routes
 app.get('/api/users', user.list);
+app.get('/api/projects', project.list);
+app.get('/api/projects/:id', project.get);
 app.get('/api/topics', topic.list);
 app.get('/api/activity', topic.activity);
 

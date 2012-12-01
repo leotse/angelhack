@@ -12,6 +12,7 @@ exports.list = function(req, res){
 
 	Topic
 	.find({})
+	.sort({ '$natural': -1 })
 	.populate('author')
 	.exec(function(err, projects) {
 		if(err) heleprs.sendError(res, 500, 'api error');
@@ -25,7 +26,7 @@ exports.activity = function(req, res) {
 	Topic
 	.find({})
 	.sort({ '$natural': -1 })
-	.limit(5)
+	.limit(3)
 	.select('pins')
 	.exec(function(err, projects) {
 		if(err) helpers.sendError(res, 500, 'api error');

@@ -31,10 +31,10 @@ module.exports.sendResult = function(res, data) {
 
 
 // sends and error json to client
-module.exports.sendError = function(res, code, message) {
+module.exports.sendError = function(res, code, err) {
 
 	// log error message
-	console.log('error code: ' + code + ' message: ' + message);
+	console.log('error - code: ' + code + ' err: ' + err);
 
 	// build and send api response
 	var apiResponse = {};
