@@ -59,13 +59,14 @@ exports.get = function(req, res) {
 
 	Pin
 	.findOne({'_id': id})
+	.populate('author')
 	.populate('annotations')
 	.populate('likes')
 	.exec(function(err, pin) {
 		if(err) helpers.sendError(res, 500, err);
 		else helpers.sendResult(res, pin);
 	});
-}
+};
 
 
 /*
@@ -155,8 +156,3 @@ exports.like = function(req, res) {
 		}
 	});
 };
-
-
-
-
-

@@ -37,6 +37,22 @@ var DetailsPageViewModel = {
 			DetailsPageViewModel.SelectedItem(data);
 			DetailsPageViewModel.Annotations(data.annotations);
 			
+		$.each("div.annotationOverlay", function(i)
+		{
+				
+			var posX = $(i).attr("data-coord-x");
+		    var posY = $(i).attr("data-coord-y");
+			
+			var objPos = {"x":posX,"y":posY};
+			
+			$(i).css({"x":posX,"y":posY});
+
+		});
+
+			
+
+
+
 		});
 		
 		$("#add-annotation-dialog").dialog({

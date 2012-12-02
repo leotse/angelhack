@@ -1,3 +1,8 @@
+.navbar {
+  position: static !important;
+  margin-bottom: 20px !important;
+}
+
 $widecard-width:500px;
 $widecard-height:320px;
 $cardbuffer:5px;
@@ -288,4 +293,63 @@ header {
 header:hover {
 	height:100px;
 	background-color:rgba(0,0,0,0.85);
+}
+
+#Page_PinDetailsPage {
+	color:#ffffff;
+	margin:0px auto;
+	width:850px;
+	#details_image_container {
+	width:850px;
+	height:600px;
+	overflow:hidden;
+		background-color:#cccccc;
+	}
+
+	.description {
+		font-size:14px;
+		margin-top:15px;
+		margin-bottom:15px;
+		float:left;
+		width:700px;
+	}
+
+	.annotatebutton {
+		float:right;
+		margin-top:15px;
+	}
+
+	.sourcelink {
+		float:right;
+		margin-top:15px;
+	}
+}
+
+	.commentsec {
+		float:left;
+		width:100%;
+		clear:both;
+		margin-top:20px;
+	}
+#inline-annotations {
+	width:100%;
+	float:left;
+	clear:both;
+	margin:0;
+	padding:0;
+
+
+	h2 {
+		font-size:18px;
+		font-weight:bold;
+		margin-bottom:0px;
+	}
+	.comment {
+		width:100%;
+		float:left;
+		clear:both;
+		border-top:1px solid #dddddd;
+		padding-top:15px;
+		margin-top:15px;
+	}
 }
