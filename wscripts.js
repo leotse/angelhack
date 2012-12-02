@@ -24,19 +24,37 @@ var request = require('request');
 // test endpoint to create pins //
 //////////////////////////////////
 
-var url = 'http://localhost:3000/api/pins?tid=50bac66812efe5180e000002'
-,	pin = {
+// var url = 'http://localhost:3000/api/pins?tid=50bac66812efe5180e000002'
+// ,	pin = {
+// 		author: '50b93b2e00b62ab60c000001',
+// 		title: 'yahoo pin',
+// 		url: 'http://www.yahoo.com',
+// 		picture: "http://l.yimg.com/a/i/mntl/ww/events/p.gif"
+// 	};
+
+// request({
+// 	method: 'post',
+// 	url: url,
+// 	form: pin
+// }, output);
+
+
+/////////////////////////////////////////
+// test endpoint to create annotations //
+/////////////////////////////////////////
+
+var url = 'http://localhost:3000/api/annotations?pid=50bacbfe496587c90e000004'
+,	annotation = {
 		author: '50b93b2e00b62ab60c000001',
-		title: 'yahoo pin',
-		url: 'http://www.yahoo.com',
-		picture: "http://l.yimg.com/a/i/mntl/ww/events/p.gif"
+		comment: 'I like this logo!'
 	};
 
 request({
 	method: 'post',
 	url: url,
-	form: pin
+	form: annotation
 }, output);
+
 
 
 

@@ -9,6 +9,7 @@ var express = require('express')
   , projects = require('./routes/api/projects')
   , topics = require('./routes/api/topics')
   , pins = require('./routes/api/pins')
+  , annotations = require('./routes/api/annotations')
   , http = require('http')
   , path = require('path');
 
@@ -53,6 +54,9 @@ app.post('/api/topics', topics.create);
 
 app.get('/api/pins', pins.list);
 app.post('/api/pins', pins.create);
+
+app.get('/api/annotations', annotations.list);
+app.post('/api/annotations', annotations.create);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){
