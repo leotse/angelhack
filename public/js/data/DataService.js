@@ -5,7 +5,8 @@ Data.DataService = (function(){
 	var isTest = false;
 	
 	//CONSTANTS
-	const DATA_SERVICE_BASE = "http://10.56.21.111:5000/api/";
+	//const DATA_SERVICE_BASE = "http://10.56.21.111:5000/api/";
+	const DATA_SERVICE_BASE = "http://angelhackto.herokuapp.com/api/";
 	
 	var PROJECTS_SERVICE = DATA_SERVICE_BASE + "projects";
 	var TOPICS_SERVICE = DATA_SERVICE_BASE + "topics";
