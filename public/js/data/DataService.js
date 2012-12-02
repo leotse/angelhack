@@ -2,16 +2,15 @@ Namespace("Data");
 
 Data.DataService = (function(){
 	
-	var isTest = true;
+	var isTest = false;
 	
 	//CONSTANTS
-	const DATA_SERVICE_BASE = "http://10.56.21.111:3000/api/";
+	const DATA_SERVICE_BASE = "http://10.56.21.111:5000/api/";
 	
 	var PROJECTS_SERVICE = DATA_SERVICE_BASE + "projects";
 	var TOPICS_SERVICE = DATA_SERVICE_BASE + "topics";
 	var ACTIVITY_SERVICE = DATA_SERVICE_BASE + "activities";
-	var PIN_SERVICE = DATA_SERVICE_BASE + "pin";
-	var ANNOTATION_SERVICE = DATA_SERVICE_BASE + "annotation";
+	var PINS_SERVICE = DATA_SERVICE_BASE + "pins";
 	
 	var USERS_SERVICE = DATA_SERVICE_BASE + "users";
 	
@@ -162,6 +161,47 @@ Data.DataService = (function(){
 		});
 	}
 	
+	GetPinsByTopic = function(topicId, callback) {
+		
+		var params = CreateServiceParamsObj({
+			tid : topicId
+		});
+		
+		var url = PINS_SERVICE;
+		
+		DoServiceCall(url, "GET", params, function(data){
+			if(data == null)
+				callback(null);
+			
+			var result = [];
+			
+			for(var i= 0; i < data.response.length; i++)
+			{
+				result.push(Data.ModelFactory.CreatePinModel(data.response[i]));
+			}
+			
+			callback(result);
+		});
+	}
+	
+	GetPinDetails = function(pinId, callback) {
+		
+		var params = CreateServiceParamsObj({
+			id : pinId
+		});
+		
+		var url = PINS_SERVICE;
+		
+		DoServiceCall(url, "GET", params, function(data){
+			if(data == null)
+				callback(null);
+			
+			var result = Data.ModelFactory.CreatePinModel(data.response);
+			
+			callback(result);
+		});
+	}
+	
 	
 	// CREATION
 	
@@ -202,6 +242,8 @@ Data.DataService = (function(){
 		GetProjectActivity: GetProjectActivity,
 		GetProjectDetails : GetProjectDetails,
 		GetTopicDetails : GetTopicDetails,
+		GetPinsByTopic : GetPinsByTopic,
+		GetPinDetails : GetPinDetails,
 		CreatePin : CreatePin,
 		CreateAnnotation : CreateAnnotation
 		

@@ -7,16 +7,18 @@ var DetailsPageViewModel = {
 	
 	Annotations : ko.observableArray([]),
 	
-	Init : function(params) {
+	Init : function(param) {
 		
 		DetailsPageViewModel.SelectedItem(null);
 		
 		DetailsPageViewModel.Annotations([]);
 		
-		if(params.pin != null) {
-			DetailsPageViewModel.SelectedItem(params.pin);
-			DetailsPageViewModel.Title(params.pin.title);
-			DetailsPageViewModel.Annotations(params.pin.annotations);
-		}
+		Data.DataService.GetPinDetails(param, function(data){
+			
+			DetailsPageViewModel.Title(data.title);
+			DetailsPageViewModel.SelectedItem(data);
+			DetailsPageViewModel.Annotations(data.annotations);
+			
+		});
 	}
 }

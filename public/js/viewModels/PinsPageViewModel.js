@@ -3,13 +3,12 @@ var PinsPageViewModel = {
 	
 	Pins : ko.observableArray(),
 	
-	Init : function(params) {
+	Init : function(param) {
 		
 		PinsPageViewModel.Pins([]);
 		
-		// TODO : Replace hardcoded id
-		Data.DataService.GetTopicDetails(params.id, function(data){
-			PinsPageViewModel.Pins(data.pins);
+		Data.DataService.GetPinsByTopic(param, function(data_array){
+			PinsPageViewModel.Pins(data_array);
 			
 			// TODO : Apply masonry on the pins page
 			

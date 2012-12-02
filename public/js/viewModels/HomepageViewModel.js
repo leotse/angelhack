@@ -3,7 +3,7 @@ var HomepageViewModel = {
 	
 	Projects : ko.observableArray([]),
 	
-	Init : function(params) {
+	Init : function(param) {
 		
 		HomepageViewModel.Projects([]);
 		
