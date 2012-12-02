@@ -18,7 +18,7 @@ var PinSchema = new Schema({
 	url: { type: String },
 	picture: { type: String },
 	tags: [{ type: String, indexed: true }],
-	annotations: [ AnnotationSchema ]
+	annotations: [{ type: Schema.ObjectId, ref: 'Annotation' }],
 
 }, { strict: true });
 
