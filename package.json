@@ -10,6 +10,7 @@
     "jade": "*",
     "mongoose": "3.4.0",
     "async": "0.1.22",
-    "underscore": "1.4.2"
+    "underscore": "1.4.2",
+    "request": "2.12.0"
   }
 }

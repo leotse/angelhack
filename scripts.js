@@ -11,17 +11,17 @@ var Models = require('./models')
 // test user save //
 ////////////////////
 
-var user = new User();
-user.username = "lanny";
-user.email = "lanny@pixelsmashing.com";
-user.picture = "http://profile.ak.fbcdn.net/hprofile-ak-snc7/c26.65.325.325/s160x160/389333_10150361381135983_710068872_n.jpg";
-user.save(function(err, saved) {
-	if(err) console.log(err);
-	else { 
-		console.log('saved user');
-		console.log(saved);
-	}
-});
+// var user = new User();
+// user.username = "lanny";
+// user.email = "lanny@pixelsmashing.com";
+// user.picture = "http://profile.ak.fbcdn.net/hprofile-ak-snc7/c26.65.325.325/s160x160/389333_10150361381135983_710068872_n.jpg";
+// user.save(function(err, saved) {
+// 	if(err) console.log(err);
+// 	else { 
+// 		console.log('saved user');
+// 		console.log(saved);
+// 	}
+// });
 
 
 ///////////////////////
@@ -44,26 +44,6 @@ user.save(function(err, saved) {
 // });
 
 
-/////////////////////
-// test topic save //
-/////////////////////
-
-// var topic = new Topic;
-// project.label = "Our third project";
-// project.logo = "http://mongoosejs.com/docs/images/apps/h_mcds.png";
-// project.color = "#fefefe";
-// project.author = '50b93b2e00b62ab60c000001';
-// project.tags.addToSet('digi');
-// project.tags.addToSet('flare');
-// project.save(function(err, saved) {
-// 	if(err) console.log(err);
-// 	else {
-// 		console.log('saved projects');
-// 		console.log(saved);
-// 	}
-// });
-
-
 /////////////////////////////
 // test project tag filter //
 /////////////////////////////
@@ -79,9 +59,11 @@ user.save(function(err, saved) {
 // });
 
 
-////////////////////////////////
-// test adding pin to project //
-////////////////////////////////
+// 
+
+//////////////////////////////
+// test adding pin to topic //
+//////////////////////////////
 
 // Topic.findById('50ba7a453a3d130c08000003', function(err, topic) {
 // 	if(err)	console.log(err);
