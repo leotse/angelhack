@@ -31,7 +31,14 @@ exports.loginPost = function(req, res) {
 		if(err) helpers.sendError(res, 500, err);
 		else if(!user) helpers.sendError(res, 500, 'invalid login');
 		else {
-			console.log(user);
+
+			// dummy password check
+			if(username !== password) {
+				helpers.sendError(res, 500, 'invalid login');
+				return;
+			}
+
+			// login success!
 			req.session.uid = user._id;
 			res.redirect('/');
 		}
