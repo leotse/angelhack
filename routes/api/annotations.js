@@ -48,6 +48,12 @@ exports.create = function(req, res) {
 		return;
 	}
 
+	var uid = req.session.uid;
+	if(!uid) {
+		helpers.sendError(res, 500, 'not logged in');
+		return;
+	}
+
 	Pin.findById(pid, function(err, pin) {
 		if(err) helpers.sendError(res, 500, err);
 		else if(!pin) helpers.sendError(res, 500, 'pin not found');
@@ -56,6 +62,7 @@ exports.create = function(req, res) {
 			var body = req.body
 			,	annotation = new Annotation(body);
 
+			annotation.author = uid;
 			annotation.save(function(err, saved) {
 				if(err) helpers.sendError(res, 500, err);
 				else { 

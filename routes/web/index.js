@@ -40,7 +40,7 @@ exports.loginPost = function(req, res) {
 
 			// login success!
 			req.session.uid = user._id;
-			res.redirect('/');
+			res.redirect('/index.html');
 		}
 	});
 };
