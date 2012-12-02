@@ -11,6 +11,12 @@ var self = exports
  */
 
 exports.list = function(req, res){
+	var id = req.query.id;
+	if(id) {
+		self.get(req, res);
+		return;
+	}
+
 	var tid = req.query.tid;
 	if(!tid) {
 		helpers.sendError(res, 500, 'missing tid');
@@ -19,7 +25,7 @@ exports.list = function(req, res){
 
 	// paging
 	var page = req.query.page || 1
-	,	limit = req.query.limit || 10
+	,	limit = req.query.limit || 30
 	,	skip = (page - 1) * limit;
 
 	Topic
@@ -41,6 +47,22 @@ exports.list = function(req, res){
 		}
 	});
 };
+
+/*
+ * GET get pin details
+ */
+
+exports.get = function(req, res) {
+	var id = req.query.id;
+
+	Pin
+	.where('_id', id)
+	.populate('annotations')
+	.exec(function(err, pin) {
+		if(err) helpers.sendError(res, 500, err);
+		else helpers.sendResult(res, pin);
+	});
+}
 
 
 /*
