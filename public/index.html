@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
+<head>
+    <meta charset="utf-8" />
 
-		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-		Remove this if you use the .htaccess -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>eyeD8.in</title>
-		<meta name="description" content="" />
-		<meta name="author" content="AngelHack" />
+    <title>eyeD8.in</title>
+    <meta name="description" content="" />
+    <meta name="author" content="AngelHack" />
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0" />
 
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		
-		
-		<!-- Bootstrap Stles -->
-		<link href="css/bootstrap.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.css" rel="stylesheet">
-		
-		<!-- Basic Style -->
-		<link rel="stylesheet" href="css/style.css" />
-		
-	    <style type="text/css">
-	      body {
-	        padding-bottom: 40px;
-	      }
-	    </style>
-	</head>
-	<body>
+    <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Bootstrap Stles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Basic Style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">eyeD8.in</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li onclick="NavigationService.Navigate(NavigationConstants.PAGE_HOMEPAGE)"><a href="#">Home</a></li>
-              <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_PINSPAGE)">Pins</a></li>
-              <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_DETAILSPAGE)">Details</a></li>
-              <!--
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">eyeD8.in</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li onclick="NavigationService.Navigate(NavigationConstants.PAGE_HOMEPAGE)"><a href="#">Home</a></li>
+                        <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_PINSPAGE)">Pins</a></li>
+                        <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_DETAILSPAGE)">Details</a></li>
+                        <!--
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -61,109 +60,176 @@
                 </ul>
               </li>
               -->
-            </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
-          </div><!--/.nav-collapse -->
+                    </ul>
+                    <form class="navbar-form pull-right">
+                        <input class="span2" type="text" placeholder="Email">
+                        <input class="span2" type="password" placeholder="Password">
+                        <button type="submit" class="btn">Sign in</button>
+                    </form>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="appContainer" style="visibility: hidden">
-    	
-	  	<div id="Page_Homepage" data-bind="visible: Display">
-			Homepage
-			<div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
-			</div>
-		</div>
-		
-		<div id="Page_PinsPage" data-bind="visible: Display">
-			PinsPage
-			<div id="assetContainer" class="clearfix" data-bind="template: {name:'pinTemplate', foreach:Pins}">
-			</div>
-		</div>
-		
-		<div id="Page_PinDetailsPage" data-bind="visible: Display">
-			Details
-		</div>
-		
-    </div> <!-- /container -->
-    
+
+        <div id="Page_Homepage" data-bind="visible: Display">
+            <section class="topics clearfix">
+                <h1>Topics</h1>
+                <div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
+                </div>
+            </section>
+            <section class="activity clearfix">
+                <h1>Acitvity</h1>
+            </section>
+        </div>
+
+        <div id="Page_PinsPage" data-bind="visible: Display">
+            <section class="board">
+                <div id="assetContainer" class="clearfix" data-bind="template: {name:'pinTemplate', foreach:Pins}">
+                </div>
+            </section>
+            <section class="messages">
+                <h1>Messages</h1>
+            </section>
+            <section class="activity">
+                <h1>Activity</h1>
+            </section>
+        </div>
+
+        <div id="Page_PinDetailsPage" data-bind="visible: Display">
+            Details
+        </div>
+    </div>
+    <!-- /container -->
+
     <!-- Placed at the end of the document so the pages load faster -->
-    
-	<!-- Library Scripts -->
-	<script src="js/libs/Namespace.js"></script>
-	<script src="js/libs/jquery-1.7.1.min.js"></script>
-	<script src="js/libs/knockout.min.js" ></script>
-	<script src="js/libs/jquery.masonry.min.js"></script>
-	<script src="js/libs/jquery.infinitescroll.min.js"></script>
-	
-	<!-- Data Stuff -->
-	<script src="js/data/models/Models.js"></script>
-	<script src="js/data/DataService.js"></script>
-	<script src="js/data/ModelFactory.js"></script>
-	
-	<!-- ViewModels -->
-	<script src="js/viewModels/HomepageViewModel.js"></script>
-	<script src="js/viewModels/PinsPageViewModel.js"></script>
-	<script src="js/viewModels/DetailsPageViewModel.js"></script>
-	
-	<!-- Navigation -->
-	<script src="js/navigation/NavigationConstants.js"></script>
-	<script src="js/navigation/NavigationService.js"></script>
-	
-	<script src="js/App.js"></script>
-	
-	<!-- Other Bootstrap JS -->
-	<script src="js/libs/bootstrap.min.js"></script>
-    
+
+    <!-- Library Scripts -->
+    <script src="js/libs/Namespace.js"></script>
+    <script src="js/libs/jquery-1.7.1.min.js"></script>
+    <script src="js/libs/knockout.min.js"></script>
+    <script src="js/libs/jquery.masonry.min.js"></script>
+    <script src="js/libs/jquery.infinitescroll.min.js"></script>
+
+    <!-- Data Stuff -->
+    <script src="js/data/models/Models.js"></script>
+    <script src="js/data/DataService.js"></script>
+    <script src="js/data/ModelFactory.js"></script>
+
+    <!-- ViewModels -->
+    <script src="js/viewModels/HomepageViewModel.js"></script>
+    <script src="js/viewModels/PinsPageViewModel.js"></script>
+    <script src="js/viewModels/DetailsPageViewModel.js"></script>
+
+    <!-- Navigation -->
+    <script src="js/navigation/NavigationConstants.js"></script>
+    <script src="js/navigation/NavigationService.js"></script>
+
+    <script src="js/App.js"></script>
+
+    <!-- Other Bootstrap JS -->
+    <script src="js/libs/bootstrap.min.js"></script>
+
     <script>
-		
-		App.Initialize();
-		
-		$(document).ready(function(){
-			$('#assetContainer').masonry({
-			  itemSelector: '.box',
-			  animationOptions: {
-			    duration: 500
-			  }
-			});
-		});
-		
-	</script>
-	
-	
-	
-	<!-- TEMPLATES -->
-	
-	<script id="featuredTopicTemplate" type="text/html">
-		<div class="box col3">
-			<div class="thumbnail">
-				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
-			</div>
-			<div class="info">
-				<h2 data-bind="text: label"></h2>
-				<div class="desc" data-bind="text: label"></div>
-			</div>
-		</div>
-	</script>
-	
-	
-	<script id="pinTemplate" type="text/html">
-		<div class="box col3">
-			<div class="thumbnail">
-				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
-			</div>
-			<div class="info">
-				<h2 data-bind="text: title"></h2>
-				<div class="desc" data-bind="text: title"></div>
-			</div>
-		</div>
-	</script>
-	
-	
-  </body>
+
+        App.Initialize();
+
+        $(document).ready(function () {
+            $('#assetContainer').masonry({
+                itemSelector: '.box',
+                animationOptions: {
+                    duration: 500
+                }
+            });
+        });
+    </script>
+
+    <!-- TEMPLATES -->
+
+    <script id="featuredTopicTemplate" type="text/html">
+        <div class="box card col3 topicview">
+            <h2 class="title" data-bind="text: label"></h2>
+            <div class="assetvisual">
+                <img src="img/placeholders/building.jpg" />
+                <!--<img data-bind="attr: {src: ThumbnailUpload}">-->
+            </div>
+
+            <div class="activities">
+                <span class="summary">42 Items (5 New)</span>
+                <span class="lastactivity">1 Hour</span>
+                <ul class="users">
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </script>
+
+    <script id="pinTemplate" type="text/html">
+        <div class="box card col3 summaryview">
+            <ul class="actions">
+                <li class="action comment"><span>Comment</span></li>
+                <li class="action like"><span>Like</span></li>
+                <li class="action share"><span>Share</span></li>
+                <li class="action annotate"><span>Annotate</span></li>
+            </ul>
+            <div class="assetvisual">
+                <img src="img/placeholders/building.jpg" />
+                <!--<img data-bind="attr: {src: ThumbnailUpload}">-->
+            </div>
+            <div class="description">
+                "Love the look of this app.."
+            </div>
+            <div class="addedby">
+                Added by: <span class="username">Lauren</span>
+            </div>
+            <div class="assetinfo">
+                <div class="set1">
+                    <div class="infoitem like">
+                        <div class="icon"></div>
+                        <div class="value">14</div>
+                    </div>
+                    <div class="infoitem comment">
+                        <div class="icon"></div>
+                        <div class="value">24</div>
+                    </div>
+                </div>
+                <div class="set2">
+                    <div class="infoitem like">
+                        <div class="icon"></div>
+                        <div class="value">14</div>
+                    </div>
+                    <div class="infoitem comment">
+                        <div class="icon"></div>
+                        <div class="value">24</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments">
+                <ol class="commentlist">
+                    <li class="comment">
+                        <div class="profilepic">Pic</div>
+                        <div class="body">Comment</div>
+                    </li>
+                    <li class="comment">
+                        <div class="profilepic">Pic</div>
+                        <div class="body">Comment</div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </script>
+</body>
 </html>

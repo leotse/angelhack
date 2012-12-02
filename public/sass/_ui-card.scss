@@ -1,0 +1,375 @@
+.card {
+	/** GLOBAL ELEMENT SETTINGS **/
+	// Thumbnail of the asset
+	.assetvisual {
+		margin-bottom:10px;
+		border:2px solid #797979;
+		box-sizing:border-box;
+		text-align:center;
+	}
+
+	// Info that displays under the 'Added by' details
+	.assetinfo {
+		$iconsize:24px;
+		.infoitem {
+			display:inline-block;
+			text-align:center;
+			.icon {
+				background-color:#797979;
+				width:$iconsize;
+				height:$iconsize;
+			}
+			.count {
+				font-size:13px;
+			}
+
+			&.like {
+				.icon {
+				
+				}
+			}
+			
+			&.comments {
+				.icon {
+				
+				}
+			}
+		}
+
+		.set1 {
+			display:inline-block;
+			width:49%;
+			text-align:left;
+			vertical-align:top;
+			.icon {
+				display:inline-block;
+			}
+			.value {
+				display:inline-block;
+				height:$iconsize;
+				line-height:$iconsize;
+				vertical-align:top;
+			}
+		}
+		.set2 {
+			display:inline-block;
+			width:49%;
+			text-align:right;
+			vertical-align:top;
+		}
+	}
+
+
+	// Comment Listing
+	.comments {
+		.commentlist {
+			margin:0;
+			padding:0;
+			list-style:none;
+			.comment {
+				margin-bottom:5px;
+				$profilepicsize:50px;
+				.profilepic {
+					display:inline-block;
+					width:$profilepicsize;
+					height:$profilepicsize;
+					background-color:#797979;
+					vertical-align:top;
+				}
+				.body {
+					display:inline-block;
+					width:-webkit-calc(100% - 60px);
+					vertical-align:top;
+				}
+				.username {
+				
+				}
+			}
+		}
+	}
+
+	/** TOPIC VIEW: Shown on the Dashboard of the service, NOT in a Board View **/
+	&.topicview {
+		display:inline-block;
+		$categorycard-padding:4px;
+		$categoryviewcard-width:230px;
+		$categoryviewcard-height:235px;
+		/*width:$categoryviewcard-width;
+		height:$categoryviewcard-height;*/
+		background-color:#c0c0c0;
+		// Title of the Card
+		.title {
+			font-size:20px;
+			font-weight:bold;
+			margin-top:10px;
+		}
+
+		// Visual of the Card, it'll be a thumbnail in this view context
+		.assetvisual {
+			//width:$categoryviewcard-width - ($categorycard-padding*2);
+			//height:136px;
+			width:100%;
+			img {
+				width:100%;
+			}
+		}
+
+		// Activities/events that have happened on the Card
+		.activities {
+			font-size:15px;
+			// Text description of what has happened
+			.summary {
+			
+			}
+
+			// The users who have done those activities
+			.users {
+				margin:10px 0px 0px 0px;
+				padding:0;
+				.user {
+					display:inline-block;
+					width:40px;
+					height:40px;
+					background-color:#525252;
+					text-align:center;
+					vertical-align:middle;
+					.profilepic {
+						display:inline-block;
+					}
+				}
+			}
+
+			// Time of the last activitiy
+			.lastactivity {
+				text-align:right;
+				float:right;
+				font-weight:bold;
+			}
+		}
+	}
+
+	/** SUMMARY VIEW: Shown in a Board View **/
+	&.summaryview {
+		$summaryviewcard-width:260px;
+		$summaryviewcard-height:auto;
+		width:$summaryviewcard-width;
+		height:$summaryviewcard-height;
+		background-color:#c0c0c0;
+		// Added by Information
+		.addedby {
+			.username {
+		
+			}
+		}
+
+		.assetvisual {
+
+		}
+
+		// Description of the card
+		.description {
+			font-size:15px;
+		}
+
+		// Action Menu that comes down when you hover over the Card
+		.actions {
+			$actionpanel-height:60px;
+			background-color:rgba(0,0,0,0.5);
+			height:$actionpanel-height;
+			padding:10px;
+			text-align:center;
+			position:absolute;
+			top:0;
+			left:0;
+			overflow:hidden;
+			width:-webkit-calc(100% - 20px);
+			top-radius:5px 5px 0px 0px;
+			opacity:0;
+			.action {
+				width:22%;
+				height:100%;
+				display:inline-block;
+				background-color:rgba(0,0,0,0.7);
+				margin:0px 2px 0px 2px;
+				vertical-align:middle;
+				span {
+					color:#ffffff;
+					font-size:11px;
+					
+				}
+				&.comment {
+			
+				}
+				&.like {
+			
+				}
+				&.share {
+			
+				}
+				&.annotate {
+			
+				}
+			}
+		}
+
+		// The comment thread that shows under the card's main pieces
+		.comments {
+			.comment {
+				.profilepic {
+
+				}
+				.body {
+				
+				}
+				.username {
+				
+				}
+			}
+		}
+	}
+
+	&.fullview {
+		$fullviewcard-width:920px;
+		$fullviewcard-minheight:790px;
+		width:$fullviewcard-width;
+		min-height:$fullviewcard-minheight;
+		background-color:blue;
+		// Added by Information
+		.addedby {
+			.username {
+		
+			}
+			.profilepic {
+		
+			}
+		}
+
+		// Title of the Card
+		.title {
+	
+		}
+
+		// Action Menu that comes down when you hover over the Card
+		.actions {
+			.action {
+				&.comment {
+			
+				}
+				&.like {
+			
+				}
+				&.share {
+			
+				}
+				&.annotate {
+			
+				}
+			}
+		}
+
+		// Visual of the Card, it'll be a thumbnail in this view context
+		.assetvisual {
+			&.annotation {
+				// Annotation's Profile Pic
+				.profilepic {
+				
+				}
+
+				// Annontation's Body Text
+				.body {
+				
+				}
+				// Visual tie-in to the asset
+				.pin {
+				
+				}
+
+				// Any associated comments to that Annotation
+				.comments {
+					// Title piece of the "comments" block in the Annotation block
+					.header {
+					
+					}
+					.profilepic {
+					
+					}
+					.cta {
+					
+					}
+				}
+			}
+		}
+
+		.assetinfo {
+			.meta {
+				.date {
+				}
+				.source {
+				
+				}
+			}
+			.comments {
+			}
+			.annotations {
+			}
+			.pagecount {
+			
+			}
+		}
+
+		.pagination {
+			.back {
+			
+			}
+			.forward {
+			
+			}
+			.page {
+				.assetpreview {
+				
+				}
+				.assetinfo {
+					.comments {
+					}
+					.annotations {
+					}
+				}
+			}
+		}
+
+		// The comment thread that shows under the card's main pieces
+		.comments {
+			.header {
+			
+			}
+			.comment {
+				//Indicates this comment has an annotation
+				&.annotation {
+				
+				}
+				.profilepic {
+
+				}
+				.body {
+				
+				}
+				.username {
+				
+				}
+			}
+
+			// A comment on a comment/annotation
+			.comment >.comment {
+			
+			}
+		}
+
+		.tags {
+			.header {
+			}
+			.tag {
+			
+			}
+		}
+	}
+}
