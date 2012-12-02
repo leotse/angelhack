@@ -1,0 +1,2 @@
+./mongorestore -h ds043987.mongolab.com:43987 -d angelhackto -u angelhackto -p angelhackto ~/db/angelhackdumps/angelhack
+./mongodump -h localhost -d angelhack -o ~/db/angelhackdumps
