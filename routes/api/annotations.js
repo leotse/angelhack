@@ -48,6 +48,7 @@ exports.create = function(req, res) {
 		return;
 	}
 
+	console.log(req.session);
 	var uid = req.session.uid;
 	if(!uid) {
 		helpers.sendError(res, 500, 'not logged in');
