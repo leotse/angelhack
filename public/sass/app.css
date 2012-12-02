@@ -2,37 +2,101 @@
   position: static !important;
   margin-bottom: 20px !important; }
 
-.cardlist {
-  margin: 0;
-  padding: 0; }
-  .cardlist .card {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; }
+.card {
+  position: relative; }
 
 /*********************************************************************************************
 # UI-ELEMENTS
 # Styling rules for individual UI Elements
 *********************************************************************************************/
 .card {
-  /** CATEGORY VIEW: Shown on the Dashboard of the service, NOT in a Board View **/
+  /** GLOBAL ELEMENT SETTINGS **/
+  /** TOPIC VIEW: Shown on the Dashboard of the service, NOT in a Board View **/
   /** SUMMARY VIEW: Shown in a Board View **/ }
+  .card .assetvisual {
+    margin-bottom: 10px;
+    border: 2px solid #797979;
+    box-sizing: border-box;
+    text-align: center; }
+  .card .assetinfo .infoitem {
+    display: inline-block;
+    text-align: center; }
+    .card .assetinfo .infoitem .icon {
+      background-color: #797979;
+      width: 24px;
+      height: 24px; }
+    .card .assetinfo .infoitem .count {
+      font-size: 13px; }
+  .card .assetinfo .set1 {
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+    vertical-align: top; }
+    .card .assetinfo .set1 .icon {
+      display: inline-block; }
+    .card .assetinfo .set1 .value {
+      display: inline-block;
+      height: 24px;
+      line-height: 24px;
+      vertical-align: top; }
+  .card .assetinfo .set2 {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+    vertical-align: top; }
+  .card .comments .commentlist {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .card .comments .commentlist .comment {
+      margin-bottom: 5px; }
+      .card .comments .commentlist .comment .profilepic {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-color: #797979;
+        vertical-align: top; }
+      .card .comments .commentlist .comment .body {
+        display: inline-block;
+        width: -webkit-calc(100% - 60px);
+        vertical-align: top; }
   .card.topicview {
     display: inline-block;
-    width: 230px;
-    height: 235px;
-    background-color: red; }
+    /*width:$categoryviewcard-width;
+    height:$categoryviewcard-height;*/
+    background-color: #c0c0c0; }
+    .card.topicview .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px; }
     .card.topicview .assetvisual {
-      width: 222px;
-      height: 136px; }
+      width: 100%; }
       .card.topicview .assetvisual img {
         width: 100%; }
+    .card.topicview .activities {
+      font-size: 15px; }
+      .card.topicview .activities .users {
+        margin: 10px 0px 0px 0px;
+        padding: 0; }
+        .card.topicview .activities .users .user {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          background-color: #525252;
+          text-align: center;
+          vertical-align: middle; }
+          .card.topicview .activities .users .user .profilepic {
+            display: inline-block; }
+      .card.topicview .activities .lastactivity {
+        text-align: right;
+        float: right;
+        font-weight: bold; }
   .card.summaryview {
     width: 260px;
     height: auto;
-    background-color: green; }
-    .card.summaryview .assetvisual {
-      border: 2px solid grey; }
+    background-color: #c0c0c0; }
+    .card.summaryview .description {
+      font-size: 15px; }
     .card.summaryview .actions {
       background-color: rgba(0, 0, 0, 0.5);
       height: 60px;
@@ -42,7 +106,9 @@
       top: 0;
       left: 0;
       overflow: hidden;
-      width: -webkit-calc(100% - 20px); }
+      width: -webkit-calc(100% - 20px);
+      top-radius: 5px 5px 0px 0px;
+      opacity: 0; }
       .card.summaryview .actions .action {
         width: 22%;
         height: 100%;

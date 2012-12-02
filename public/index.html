@@ -72,115 +72,38 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-    <div class="container">
+    <div class="appContainer" style="visibility: hidden">
 
         <div id="Page_Homepage" data-bind="visible: Display">
-            <section class="topics">
+            <section class="topics clearfix">
                 <h1>Topics</h1>
-                <ol class="cardlist">
-                    <li class="card topicview">
-                        <h2>Idea Board</h2>
-                        <div class="assetvisual">
-                            Picture
-                        </div>
-                        <div class="activites">
-                            <span class="summary">42 Items (5 New)</span>
-                            <span class="lastactivity">1 Hour</span>
-                            <ul class="users">
-                                <li class="profilepic">Pic</li>
-                                <li class="profilepic">Pic</li>
-                                <li class="profilepic">Pic</li>
-                                <li class="profilepic">Pic</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ol>
+                <div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
+                </div>
             </section>
-            <section class="activities">
-                <h1>Activity</h1>
-                <ol class="activitylist">
-                    <li class="activity"></li>
-                </ol>
+            <section class="activity clearfix">
+                <h1>Acitvity</h1>
             </section>
         </div>
 
         <div id="Page_PinsPage" data-bind="visible: Display">
-            <section id="pinCollection" class="clearfix">
-                <ol class="cardlist">
-                    <li class="card summaryview">
-                        <ul class="actions">
-                            <li class="action comment"><span>Comment</span></li>
-                            <li class="action like"><span>Like</span></li>
-                            <li class="action share"><span>Share</span></li>
-                            <li class="action annotate"><span>Annotate</span></li>
-                        </ul>
-                        <div class="assetvisual">
-                        </div>
-                        <div class="description"></div>
-                        <div class="addedby">Added by: <span class="username">Lauren</span></div>
-                        <div class="assetinfo">
-                            <div class="infoitem like">
-                                <div class="icon"></div>
-                                <div class="value">14</div>
-                            </div>
-                            <div class="infoitem comment">
-                                <div class="icon"></div>
-                                <div class="value">24</div>
-                            </div>
-                        </div>
-                        <div class="comments">
-                            <ol class="commentlist">
-                                <li class="comment">
-                                    <div class="profilepic">Pic</div>
-                                    <div class="body">Comment</div>
-                                </li>
-                                <li class="comment">
-                                    <div class="profilepic">Pic</div>
-                                    <div class="body">Comment</div>
-                                </li>
-                            </ol>
-                        </div>
-                    </li>
-                </ol>
+            <section class="board">
+                <div id="assetContainer" class="clearfix" data-bind="template: {name:'pinTemplate', foreach:Pins}">
+                </div>
             </section>
             <section class="messages">
-                Messages Tab
+                <h1>Messages</h1>
             </section>
-            <section class="activities">
-                Activities Tab
+            <section class="activity">
+                <h1>Activity</h1>
             </section>
         </div>
 
         <div id="Page_PinDetailsPage" data-bind="visible: Display">
-            <div class="card fullview">
-            </div>
+            Details
         </div>
     </div>
     <!-- /container -->
 
-=======
-    <div class="appContainer" style="visibility: hidden">
-    	
-	  	<div id="Page_Homepage" data-bind="visible: Display">
-			Homepage
-			<div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
-			</div>
-		</div>
-		
-		<div id="Page_PinsPage" data-bind="visible: Display">
-			PinsPage
-			<div id="assetContainer" class="clearfix" data-bind="template: {name:'pinTemplate', foreach:Pins}">
-			</div>
-		</div>
-		
-		<div id="Page_PinDetailsPage" data-bind="visible: Display">
-			Details
-		</div>
-		
-    </div> <!-- /container -->
-    
->>>>>>> 8b7471172eda1c05eab8c41a44e7ff8d7b186bf5
     <!-- Placed at the end of the document so the pages load faster -->
 
     <!-- Library Scripts -->
@@ -210,66 +133,103 @@
     <script src="js/libs/bootstrap.min.js"></script>
 
     <script>
-<<<<<<< HEAD
 
         App.Initialize();
 
         $(document).ready(function () {
-            $('#pinCollection').masonry({
-                itemSelector: '.card',
+            $('#assetContainer').masonry({
+                itemSelector: '.box',
                 animationOptions: {
                     duration: 500
                 }
             });
         });
     </script>
+
+    <!-- TEMPLATES -->
+
+    <script id="featuredTopicTemplate" type="text/html">
+        <div class="box card col3 topicview">
+            <h2 class="title" data-bind="text: label"></h2>
+            <div class="assetvisual">
+                <img src="img/placeholders/building.jpg" />
+                <!--<img data-bind="attr: {src: ThumbnailUpload}">-->
+            </div>
+
+            <div class="activities">
+                <span class="summary">42 Items (5 New)</span>
+                <span class="lastactivity">1 Hour</span>
+                <ul class="users">
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                    <li class="user">
+                        <div class="profilepic">Pic</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </script>
+
+    <script id="pinTemplate" type="text/html">
+        <div class="box card col3 summaryview">
+            <ul class="actions">
+                <li class="action comment"><span>Comment</span></li>
+                <li class="action like"><span>Like</span></li>
+                <li class="action share"><span>Share</span></li>
+                <li class="action annotate"><span>Annotate</span></li>
+            </ul>
+            <div class="assetvisual">
+                <img src="img/placeholders/building.jpg" />
+                <!--<img data-bind="attr: {src: ThumbnailUpload}">-->
+            </div>
+            <div class="description">
+                "Love the look of this app.."
+            </div>
+            <div class="addedby">
+                Added by: <span class="username">Lauren</span>
+            </div>
+            <div class="assetinfo">
+                <div class="set1">
+                    <div class="infoitem like">
+                        <div class="icon"></div>
+                        <div class="value">14</div>
+                    </div>
+                    <div class="infoitem comment">
+                        <div class="icon"></div>
+                        <div class="value">24</div>
+                    </div>
+                </div>
+                <div class="set2">
+                    <div class="infoitem like">
+                        <div class="icon"></div>
+                        <div class="value">14</div>
+                    </div>
+                    <div class="infoitem comment">
+                        <div class="icon"></div>
+                        <div class="value">24</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments">
+                <ol class="commentlist">
+                    <li class="comment">
+                        <div class="profilepic">Pic</div>
+                        <div class="body">Comment</div>
+                    </li>
+                    <li class="comment">
+                        <div class="profilepic">Pic</div>
+                        <div class="body">Comment</div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </script>
 </body>
 </html>
-=======
-		
-		App.Initialize();
-		
-		$(document).ready(function(){
-			$('#assetContainer').masonry({
-			  itemSelector: '.box',
-			  animationOptions: {
-			    duration: 500
-			  }
-			});
-		});
-		
-	</script>
-	
-	
-	
-	<!-- TEMPLATES -->
-	
-	<script id="featuredTopicTemplate" type="text/html">
-		<div class="box col3">
-			<div class="thumbnail">
-				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
-			</div>
-			<div class="info">
-				<h2 data-bind="text: label"></h2>
-				<div class="desc" data-bind="text: label"></div>
-			</div>
-		</div>
-	</script>
-	
-	
-	<script id="pinTemplate" type="text/html">
-		<div class="box col3">
-			<div class="thumbnail">
-				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
-			</div>
-			<div class="info">
-				<h2 data-bind="text: title"></h2>
-				<div class="desc" data-bind="text: title"></div>
-			</div>
-		</div>
-	</script>
-	
-	
-  </body>
-</html>
->>>>>>> 8b7471172eda1c05eab8c41a44e7ff8d7b186bf5

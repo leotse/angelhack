@@ -5,16 +5,9 @@
 }
 
 // List of Cards
-.cardlist {
-	margin:0;
-	padding:0;
-	.card {
-		margin:0;
-		padding:0;
-		overflow:hidden;
-	}
+.card {
+	position:relative;
 }
-
 .activitylist {
 	.activity {
 	
@@ -27,4 +20,8 @@
 }
 .profilepic {
 	
+}
+
+.assetvisual {
+
 }
