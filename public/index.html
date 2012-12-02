@@ -76,12 +76,13 @@
     	
 	  	<div id="Page_Homepage" data-bind="visible: Display">
 			Homepage
-			<ul class="topicsList" id="featured-topics-list" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}"></ul>
+			<div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
+			</div>
 		</div>
 		
 		<div id="Page_PinsPage" data-bind="visible: Display">
 			PinsPage
-			<div id="assetContainer" class="clearfix">
+			<div id="assetContainer" class="clearfix" data-bind="template: {name:'pinTemplate', foreach:Pins}">
 			</div>
 		</div>
 		
@@ -139,7 +140,7 @@
 	<!-- TEMPLATES -->
 	
 	<script id="featuredTopicTemplate" type="text/html">
-		<li>
+		<div class="box col3">
 			<div class="thumbnail">
 				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
 			</div>
@@ -147,9 +148,21 @@
 				<h2 data-bind="text: label"></h2>
 				<div class="desc" data-bind="text: label"></div>
 			</div>
-		</li>
+		</div>
 	</script>
 	
+	
+	<script id="pinTemplate" type="text/html">
+		<div class="box col3">
+			<div class="thumbnail">
+				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
+			</div>
+			<div class="info">
+				<h2 data-bind="text: title"></h2>
+				<div class="desc" data-bind="text: title"></div>
+			</div>
+		</div>
+	</script>
 	
 	
   </body>

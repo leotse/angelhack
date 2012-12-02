@@ -22,6 +22,12 @@ Data.ModelFactory.CreateTopicModel = function(data){
 	});
 }
 
+Data.ModelFactory.CreateActivityModel = function(data){
+	return $.extend(data,{
+		
+	});
+}
+
 Data.ModelFactory.CreateBaseAsset = function(data){
 	return $.extend(data,{
 		
