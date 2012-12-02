@@ -58,6 +58,7 @@ app.post('/api/topics', topics.create);
 
 app.get('/api/pins', pins.list);
 app.post('/api/pins', pins.create);
+app.post('/api/like', pins.like);
 
 app.get('/api/annotations', annotations.list);
 app.post('/api/annotations', annotations.create);

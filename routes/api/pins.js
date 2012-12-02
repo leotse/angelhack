@@ -99,3 +99,13 @@ exports.create = function(req, res) {
 	});
 };
 
+
+/*
+ * POST like a pin
+ */
+
+exports.like = function(req, res) {
+	
+	
+
+};

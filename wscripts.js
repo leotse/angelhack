@@ -43,10 +43,10 @@ var request = require('request');
 // test endpoint to create annotations //
 /////////////////////////////////////////
 
-// var url = 'http://localhost:3000/api/annotations?pid=50bada65c8c98a0d100000ad'
+// var url = 'http://localhost:3000/api/annotations?pid=50baef866c60e97213000002'
 // ,	annotation = {
 // 		author: '50b93b2e00b62ab60c000001',
-// 		comment: 'I like this logo!'
+// 		body: 'Team check out this library'
 // 	};
 
 // request({
@@ -56,10 +56,15 @@ var request = require('request');
 // }, output);
 
 
-var url = 'http://localhost:3000/api/comments?aid=50badcf8bc43ac3c11000001'
+
+/////////////////////
+// test commenting //
+/////////////////////
+
+var url = 'http://localhost:3000/api/comments?aid=50baf0590330269213000001'
 ,	comment = {
 		author: '50b93b2e00b62ab60c000001',
-		body: 'I do not like this logo'
+		body: 'good lib, i use it all the time'
 	};
 
 request({
