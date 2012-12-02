@@ -83,10 +83,18 @@ Data.ModelFactory.CreatePinModel = function(data){
 Data.ModelFactory.CreateAnnotationModel = function(data){
 	var result = data;
 	
+	var region = null;
+	
+	if(data.region && data.region.x && data.region.y)
+	{
+		region = data.region;
+	}
+	
 	return $.extend(result,{
 		annotations : annotations,
 		OnClick : function(item) {
 			console.log("CLICK", item);
-		}
+		},
+		region : region
 	});
 }
