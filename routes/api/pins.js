@@ -58,6 +58,7 @@ exports.get = function(req, res) {
 	Pin
 	.findOne({'_id': id})
 	.populate('annotations')
+	.populate('likes')
 	.exec(function(err, pin) {
 		if(err) helpers.sendError(res, 500, err);
 		else helpers.sendResult(res, pin);
@@ -105,7 +106,30 @@ exports.create = function(req, res) {
  */
 
 exports.like = function(req, res) {
-	
-	
+	var pid = req.query.pid
+	if(!pid) {
+		helpers.sendError(res, 500, err);
+		return;
+	}
 
+	Pin.findById(pid, function(err, pin) {
+		if(err) helpers.sendError(res, 500, err);
+		else if(!pin) helpers.sendError(res, 500, 'pin not found');
+		else {
+
+			var body = req.body
+			,	uid = body.uid;
+
+			pin.likes.addToSet(uid);
+			pin.save(function(err, saved) {
+				if(err) helpers.sendError(res, 500, err);
+				else helpers.sendResult(res, saved);
+			});
+		}
+	});
 };
+
+
+
+
+

@@ -19,6 +19,7 @@ var PinSchema = new Schema({
 	picture: { type: String },
 	tags: [{ type: String, indexed: true }],
 	annotations: [{ type: Schema.ObjectId, ref: 'Annotation' }],
+	likes: [{ type: Schema.ObjectId, ref: 'User' }],
 
 }, { strict: true });
 

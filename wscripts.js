@@ -61,20 +61,34 @@ var request = require('request');
 // test commenting //
 /////////////////////
 
-var url = 'http://localhost:3000/api/comments?aid=50baf0590330269213000001'
-,	comment = {
-		author: '50b93b2e00b62ab60c000001',
-		body: 'good lib, i use it all the time'
-	};
+// var url = 'http://localhost:3000/api/comments?aid=50baf0590330269213000001'
+// ,	comment = {
+// 		author: '50b93b2e00b62ab60c000001',
+// 		body: 'good lib, i use it all the time'
+// 	};
+
+// request({
+// 	method: 'post',
+// 	url: url,
+// 	form: comment
+// }, output);
+
+
+/////////////////////
+// test liking pin //
+/////////////////////
+
+var url = 'http://localhost:3000/api/like?pid=50baef866c60e97213000002'
+,	body = { uid: '50ba9e01b5aa33b10b000003' };
 
 request({
 	method: 'post',
 	url: url,
-	form: comment
+	form: body
 }, output);
 
 
-// helper
+// helpers
 function output(err, res, body) {
 	if(err) console.log(err);
 	else if(res.statusCode !== 200) console.log(res.statusCode);
