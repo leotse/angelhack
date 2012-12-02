@@ -1,46 +1,41 @@
-var _ = require('underscore')
+var self = exports
+,	_ = require('underscore')
 ,	Models = require('../../models')
 ,	Topic = Models.Topic
 ,	helpers = require('../../helpers');
 
 
 /*
- * GET projects listing.
+ * GET topics listing.
  */
 
 exports.list = function(req, res){
-
-	Topic
-	.find({})
-	.populate('author')
-	.exec(function(err, projects) {
-		if(err) heleprs.sendError(res, 500, 'api error');
-		else helpers.sendResult(res, projects);
-	});
-};
-
-
-exports.activity = function(req, res) {
+	var id = req.query.id;
+	if(id) {
+		self.get(req, res);
+		return;
+	}
 
 	Topic
 	.find({})
 	.sort({ '$natural': -1 })
-	.limit(5)
-	.select('pins')
-	.exec(function(err, projects) {
-		if(err) helpers.sendError(res, 500, 'api error');
-		if(!projects || projects.length === 0) helpers.sendResult(res, []);
-		else {
-
-			// generate activty feed
-			var activities = [];
-			_.each(projects, function(project) {
-				console.log(project.pins);
-				activities = activities.concat(project.pins);
-			});
-
-			console.log(activities);
-			helpers.sendResult(res, activities);
-		}
+	.populate('author')
+	.exec(function(err, topics) {
+		if(err) heleprs.sendError(res, 500, err);
+		else helpers.sendResult(res, topics);
 	});
 };
+
+
+/*
+ * GET topic deatils
+ */
+
+ exports.get = function(req, res) {
+ 	var id = req.query.id;
+
+ 	Topic.findById(id, function(err, topic) {
+ 		if(err) helpers.sendError(res, 500, err);
+ 		else helpers.sendResult(res, topic);
+ 	});
+ };

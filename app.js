@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes/web')
   , user = require('./routes/api/user')
+  , project = require('./routes/api/project')
   , topic = require('./routes/api/topic')
   , http = require('http')
   , path = require('path');
@@ -22,6 +23,11 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(express.cookieParser());
+  app.use(express.session({ 
+    secret: 'pqlFNkq74RGxmjfJYIhwmw==',
+    cookie: { maxAge: 3600000 }
+  }));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -31,11 +37,15 @@ app.configure('development', function(){
 
 // web routes
 app.get('/', routes.index);
+app.get('/login', routes.login);
+app.post('/login', routes.loginPost);
+app.get('/logout', routes.logout);
 
 // api routes
 app.get('/api/users', user.list);
+app.get('/api/projects', project.list);
+app.get('/api/activities', project.activity);
 app.get('/api/topics', topic.list);
-app.get('/api/activity', topic.activity);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "code": 200
+  },
+  "response": {
+    "logo": "http://marketingbones.com/wp-content/uploads/2011/01/starbucks-new-logo.jpg",
+    "title": "Secret Project",
+    "_id": "50ba8a1e9cb44f9309000003",
+    "__v": 0,
+    "topics": [
+      {
+        "author": "50b93b2e00b62ab60c000001",
+        "color": "#fefefe",
+        "logo": "http://mongoosejs.com/docs/images/apps/h_mcds.png",
+        "label": "Our first project",
+        "_id": "50ba79a3a021000908000003",
+        "__v": 0,
+        "pins": [],
+        "tags": [
+          "cool",
+          "beans"
+        ]
+      },
+      {
+        "author": "50b93b2e00b62ab60c000001",
+        "color": "#fefefe",
+        "logo": "http://mongoosejs.com/docs/images/apps/h_mcds.png",
+        "label": "Our second project",
+        "_id": "50ba7a3861446f0b08000003",
+        "__v": 0,
+        "pins": [],
+        "tags": [
+          "angel",
+          "hack"
+        ]
+      },
+      {
+        "__v": 3,
+        "_id": "50ba7a453a3d130c08000003",
+        "author": "50b93b2e00b62ab60c000001",
+        "color": "#fefefe",
+        "label": "Our third project",
+        "logo": "http://mongoosejs.com/docs/images/apps/h_mcds.png",
+        "pins": [
+          {
+            "_id": "50ba819245f942d708000003",
+            "author": "50b93b2e00b62ab60c000001",
+            "title": "First pin",
+            "url": "http://www.google.com",
+            "picture": "https://www.google.ca/images/srpr/logo3w.png",
+            "annotations": [],
+            "tags": []
+          },
+          {
+            "_id": "50ba83e0b3f0d90c09000003",
+            "author": "50b93b2e00b62ab60c000001",
+            "title": "Bing pin",
+            "url": "http://www.bing.com",
+            "picture": "http://images.pcworld.com/news/graphics/213816-bing-logo_original.png",
+            "annotations": [],
+            "tags": []
+          },
+          {
+            "_id": "50ba8414a7d11d1209000003",
+            "author": "50b93b2e00b62ab60c000001",
+            "title": "Ya hoo",
+            "url": "http://www.yahoo.com",
+            "picture": "http://kara.allthingsd.com/files/2009/06/yahoo-purple-logojpg.jpeg",
+            "annotations": [],
+            "tags": []
+          }
+        ],
+        "tags": [
+          "digi",
+          "flare"
+        ]
+      }
+    ]
+  }
+}

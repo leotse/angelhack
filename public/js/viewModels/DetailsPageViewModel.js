@@ -1,5 +1,9 @@
 var DetailsPageViewModel = {
 	Display: ko.observable(false),
 	
-	SelectedItem : null
+	SelectedItem : null,
+	
+	Init : function(params) {
+		
+	}
 }

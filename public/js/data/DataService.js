@@ -2,9 +2,18 @@ Namespace("Data");
 
 Data.DataService = (function(){
 	
-	//CONSTANTS
-	var DATA_SERVICE_BASE = "http://www.something.com";
+	var isTest = true;
 	
+	//CONSTANTS
+	const DATA_SERVICE_BASE = "http://10.56.21.111:3000/api/";
+	
+	var PROJECTS_SERVICE = DATA_SERVICE_BASE + "projects";
+	var TOPICS_SERVICE = DATA_SERVICE_BASE + "topics";
+	var ACTIVITY_SERVICE = DATA_SERVICE_BASE + "activities";
+	var PIN_SERVICE = DATA_SERVICE_BASE + "pin";
+	var ANNOTATION_SERVICE = DATA_SERVICE_BASE + "annotation";
+	
+	var USERS_SERVICE = DATA_SERVICE_BASE + "users";
 	
 	// PRIVATE METHODS
 	CreateServiceParamsObj = function(options) {
@@ -16,18 +25,148 @@ Data.DataService = (function(){
 		return $.extend(basicParams,options);
 	}
 	
-	
-	// PUBLIC METHODS
-	GetSomeString = function() {
-		return "HELLO";
+	IsDataValid = function(data) {
+		return (data != null && 
+				data.meta != null && 
+				data.meta.code != null &&
+				data.meta.code == "200" &&
+				data.response != null)
+				
 	}
 	
-	GetAssetsByCategoryId = function(categoryId, callback) {
-		callback();
+	DoServiceCall = function(url, method, params, callback) {
+		
+		if(method == "GET") {
+			$.get(url, params, function(data) {
+	        	
+	        	if(IsDataValid(data))
+	        	{
+	        		callback(data);
+	    		}
+	        	else
+	        	{
+	        		callback(null)	
+	        	}
+	        }, "json");
+       }
+       else if(method == "POST") {
+			$.post(url, params, function(data) {
+	        	
+	        	if(IsDataValid(data))
+	        	{
+	        		callback(data);
+	    		}
+	        	else
+	        	{
+	        		callback(null)	
+	        	}
+	        }, "json");
+       }
+        
+	}
+	
+	
+	// PUBLIC METHODS
+	GetAllProjects = function(callback) {
+		var params = CreateServiceParamsObj();
+		
+		var url = PROJECTS_SERVICE;
+		
+		if(isTest) {
+			url = "js/data/test/projects.json";
+		}
+		
+		DoServiceCall(url, "GET", params, function(data){
+			if(data == null)
+				callback(null);
+				
+			var result = [];
+			
+			for(var i= 0; i < data.response.length; i++)
+			{
+				result.push(Data.ModelFactory.CreateProjectModel(data.response[i]));
+			}
+			
+			callback(result);
+		});
+	}
+	
+	GetProjectDetails = function(projectId, callback) {
+		
+		var params = CreateServiceParamsObj({
+			id : projectId
+		});
+		
+		var url = PROJECTS_SERVICE;
+		
+		if(isTest) {
+			url = "js/data/test/projectDetails.json";
+		}
+		
+		DoServiceCall(url, "GET", params, function(data){
+			if(data == null)
+				callback(null);
+			
+			var result = Data.ModelFactory.CreateProjectModel(data.response);
+			
+			callback(result);
+		});
+	}
+	
+	GetProjectActivity = function(projectId, callback) {
+		
+		var params = CreateServiceParamsObj({
+			id : projectId
+		});
+		
+		var url = ACTIVITY_SERVICE;
+		
+		if(isTest) {
+			url = "js/data/test/activities.json";
+		}
+		
+		DoServiceCall(url, "GET", params, function(data){
+			if(data == null)
+				callback(null);
+			
+			var result = [];
+			
+			for(var i= 0; i < data.response.length; i++)
+			{
+				result.push(Data.ModelFactory.CreateActivityModel(data.response[i]));
+			}
+			
+			callback(result);
+		});
+	}
+	
+	GetTopicDetails = function(topicId, callback) {
+		
+		var params = CreateServiceParamsObj({
+			id : topicId
+		});
+		
+		var url = TOPICS_SERVICE;
+		
+		if(isTest) {
+			url = "js/data/test/topicDetails.json";
+		}
+		
+		DoServiceCall(url, "GET", params, function(data){
+			if(data == null)
+				callback(null);
+			
+			var result = Data.ModelFactory.CreateTopicModel(data.response);
+			
+			callback(result);
+		});
 	}
 	
 	return {
-		GetSomeString : GetSomeString
+		GetAllProjects : GetAllProjects,
+		GetProjectActivity: GetProjectActivity,
+		GetProjectDetails : GetProjectDetails,
+		GetTopicDetails : GetTopicDetails
 	}
 	
 }());
