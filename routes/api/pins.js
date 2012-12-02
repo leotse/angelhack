@@ -1,4 +1,6 @@
 var self = exports
+,	fs = require('fs')
+,	uuid = require('node-uuid')
 ,	_ = require('underscore')
 ,	Models = require('../../models')
 ,	Topic = Models.Topic
@@ -81,21 +83,46 @@ exports.create = function(req, res) {
 		if(err) helpers.sendError(res, 500, err);
 		else if(!topic) helpers.sendError(res, 500, 'topic not found');
 		else {
-			
+
 			var body = req.body
+			,	imageData = body.imageData
 			,	pin = new Pin(body);
 
-			pin.save(function(err, pin) {
-				if(err) helpers.sendError(res, 500, err);
-				else { 
+			// process image data if present
+			if(imageData) {
+				var buffer = new Buffer(imageData, 'base64')
+				,	id = uuid.v4()
+				,	path = './public/uploaded/' + id + '.jpg'
+				,	url = '/uploaded/' + id + '.jpg';
 
-					topic.pins.addToSet(pin._id);
-					topic.save(function(err, saved) {
-						if(err) helpers.sendError(res, 500, err);
-						else helpers.sendResult(res, saved);
-					});
-				}
-			});
+				fs.writeFile(path, buffer, function(err) {
+					if(err) { 
+						helpers.sendError(res, err);
+						return;
+					}
+					else { 
+						pin.picture = url; 
+						savePin();
+					}
+				});
+			} else { 
+				savePin();
+			}
+
+			// stupid helper
+			function savePin() {
+				pin.save(function(err, pin) {
+					if(err) helpers.sendError(res, 500, err);
+					else { 
+
+						topic.pins.addToSet(pin._id);
+						topic.save(function(err, saved) {
+							if(err) helpers.sendError(res, 500, err);
+							else helpers.sendResult(res, pin);
+						});
+					}
+				});
+			}
 		}
 	});
 };
