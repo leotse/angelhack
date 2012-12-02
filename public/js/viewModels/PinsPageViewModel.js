@@ -1,5 +1,9 @@
 var PinsPageViewModel = {
 	Display: ko.observable(false),
 	
-	AllItems : ko.observable()
+	AllItems : ko.observable(),
+	
+	Init : function(params) {
+		
+	}
 }
