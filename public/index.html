@@ -7,7 +7,7 @@
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		
-		<title>eyeD8.in</title>
+		<title>id8.in</title>
 		<meta name="description" content="" />
 		<meta name="author" content="AngelHack" />
 
@@ -21,6 +21,9 @@
 		<!-- Bootstrap Stles -->
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.css" rel="stylesheet">
+		
+		<!-- jQuery Bootstrap Custom CSS --> 
+		<link href="css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
 		
 		<!-- Basic Style -->
 		<link rel="stylesheet" href="css/style.css" />
@@ -44,9 +47,9 @@
           <a class="brand" href="#" onclick="NavigationService.Navigate(NavigationConstants.PAGE_HOMEPAGE)">eyeD8.in</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li onclick="NavigationService.Navigate(NavigationConstants.PAGE_PROJECT, {id: '50ba8a1e9cb44f9309000003'})"><a href="#">Home</a></li>
-              <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_PINSPAGE)">Pins</a></li>
-              <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_DETAILSPAGE)">Details</a></li>
+              <li onclick=""><a href="#">Home</a></li>
+              <li><a onclick="">Pins</a></li>
+              <li><a onclick="">Details</a></li>
               <!--
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -96,11 +99,24 @@
 		</div>
 		
 		<div id="Page_PinDetailsPage" data-bind="visible: Display">
+			<span data-bind="text: Title"></span>
 			<div id="details_image_container">
-				<img id="details_image" src="http://pcdn.500px.net/19589689/0d499b08eef09531752bd64c0b52c827ffd3a04f/4.jpg" style="height:600px; width:850px;" />
+				<img i data-bind="attr:{src:Picture}" id="details_image" style="height:600px; width:850px;" />
 			</div>
+			<input type="button" data-bind="{click:InitiateAddAnnotation}" value="Add Annotation"></input>
+			
+			<a data-bind="attr:{href:Url}" target="_blank">Source</a>
+			
 			<h2>Comments</h2>
 			<ul id="annotations" class="clearfix" data-bind="template: {name:'annotationTemplate', foreach:Annotations}"></ul>
+			
+			<div id="add-annotation-dialog" title="Add Annotation">
+	            <p>
+	              <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+	              <input id="add-annotation-dialog-text" />
+	            </p>
+	          </div>
+          
 		</div>
 		
     </div> <!-- /container -->
@@ -111,6 +127,7 @@
 	<script src="js/libs/jquery-1.7.1.min.js"></script>
 	<script src="js/libs/Namespace.js"></script>
 	<script src="js/libs/jquery.address-1.5.min.js"></script>
+	<script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
 	<script src="js/libs/knockout.min.js" ></script>
 	<script src="js/libs/jquery.masonry.min.js"></script>
 	<script src="js/libs/jquery.infinitescroll.min.js"></script>
@@ -195,8 +212,8 @@
 	<script id="annotationTemplate" type="text/html">
 		<div class="box col3" data-bind="click: OnClick">
 			<div class="info">
-				<h2 data-bind="text: title"></h2>
-				<div class="desc" data-bind="text: title"></div>
+				<h2 data-bind="text: body"></h2>
+				<div class="desc" data-bind="text: body"></div>
 			</div>
 		</div>
 	</script>

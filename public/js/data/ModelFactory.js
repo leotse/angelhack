@@ -68,7 +68,7 @@ Data.ModelFactory.CreatePinModel = function(data){
 	{
 		for(var i = 0; i < data.annotations.length; i++)
 		{
-			annotations.push(Data.ModelFactory.CreatePinModel(data.annotations[i]));
+			annotations.push(Data.ModelFactory.CreateAnnotationModel(data.annotations[i]));
 		}
 	}
 	
@@ -76,6 +76,17 @@ Data.ModelFactory.CreatePinModel = function(data){
 		annotations : annotations,
 		OnClick : function(item) {
 			NavigationService.Navigate(NavigationConstants.PAGE_DETAILSPAGE, {"id": item._id});
+		}
+	});
+}
+
+Data.ModelFactory.CreateAnnotationModel = function(data){
+	var result = data;
+	
+	return $.extend(result,{
+		annotations : annotations,
+		OnClick : function(item) {
+			console.log("CLICK", item);
 		}
 	});
 }

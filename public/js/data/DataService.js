@@ -11,6 +11,7 @@ Data.DataService = (function(){
 	var TOPICS_SERVICE = DATA_SERVICE_BASE + "topics";
 	var ACTIVITY_SERVICE = DATA_SERVICE_BASE + "activities";
 	var PINS_SERVICE = DATA_SERVICE_BASE + "pins";
+	var ANNOTATIONS_SERVICE = DATA_SERVICE_BASE + "annotations";
 	
 	var USERS_SERVICE = DATA_SERVICE_BASE + "users";
 	
@@ -209,7 +210,7 @@ Data.DataService = (function(){
 		
 		var params = CreateServiceParamsObj(data);
 		
-		var url = PIN_SERVICE;
+		var url = PINS_SERVICE;
 		
 		DoServiceCall(url, "POST", params, function(data){
 			if(data == null)
@@ -221,17 +222,48 @@ Data.DataService = (function(){
 		});
 	}
 	
-	CreateAnnotation = function(data, callback) {
-		
+	UpdateLike = function(data, callback) {
 		var params = CreateServiceParamsObj(data);
 		
-		var url = ANNOTATION_SERVICE;
+		var url = PINS_SERVICE;
 		
 		DoServiceCall(url, "POST", params, function(data){
 			if(data == null)
 				callback(null);
 				
 			var result = Data.ModelFactory.CreatePinModel(data.response);
+			
+			callback(result);
+		});
+	}
+	
+	CreateAnnotation = function(pid, data, callback) {
+		
+		var params = CreateServiceParamsObj(data);
+		
+		var url = ANNOTATIONS_SERVICE + "?pid=" + pid;
+		
+		DoServiceCall(url, "POST", params, function(data){
+			if(data == null)
+				callback(null);
+				
+			var result = Data.ModelFactory.CreateAnnotationModel(data.response);
+			
+			callback(result);
+		});
+	}
+	
+	AddCommentToAnnotation = function(data, callback) {
+		
+		var params = CreateServiceParamsObj(data);
+		
+		var url = ANNOTATIONS_SERVICE;
+		
+		DoServiceCall(url, "POST", params, function(data){
+			if(data == null)
+				callback(null);
+				
+			var result = Data.ModelFactory.CreateAnnotationModel(data.response);
 			
 			callback(result);
 		});
@@ -245,7 +277,9 @@ Data.DataService = (function(){
 		GetPinsByTopic : GetPinsByTopic,
 		GetPinDetails : GetPinDetails,
 		CreatePin : CreatePin,
-		CreateAnnotation : CreateAnnotation
+		UpdateLike : UpdateLike,
+		CreateAnnotation : CreateAnnotation,
+		AddCommentToAnnotation : AddCommentToAnnotation,
 		
 	}
 	
