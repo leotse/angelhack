@@ -239,11 +239,13 @@ header nav ul .profilepic {
   height: 100%;
   position: fixed;
   top: 10px;
-  background: white!important;
+  background: rgba(0, 0, 0, 0.95) !important;
   z-index: 10;
   color: #b6b1b1;
+  font-family: Gotham, Arial;
+  font-weight: medium;
 }
-/* line 233, ../sass/app1.scss */
+/* line 235, ../sass/app1.scss */
 #filterpanel h2 {
   font-family: Gotham, Arial;
   font-weight: medium;
@@ -251,7 +253,7 @@ header nav ul .profilepic {
   text-transform: uppercase;
   margin-top: 0;
 }
-/* line 241, ../sass/app1.scss */
+/* line 243, ../sass/app1.scss */
 #filterpanel .toggle {
   font-family: Gotham, Arial;
   font-weight: medium;
@@ -264,7 +266,7 @@ header nav ul .profilepic {
   padding-bottom: 50px;
   padding-top: 30px;
 }
-/* line 252, ../sass/app1.scss */
+/* line 254, ../sass/app1.scss */
 #filterpanel .toggle h1 {
   -webkit-transform: rotate(90deg);
   font-size: 14px;
@@ -274,31 +276,31 @@ header nav ul .profilepic {
   margin-bottom: 10px;
 }
 
-/* line 264, ../sass/app1.scss */
+/* line 266, ../sass/app1.scss */
 #filterpanel {
   left: -250px;
   -webkit-transition: left 0.5s;
 }
 
-/* line 268, ../sass/app1.scss */
+/* line 270, ../sass/app1.scss */
 #filterpanel:hover {
   left: 0;
 }
 
-/* line 273, ../sass/app1.scss */
+/* line 275, ../sass/app1.scss */
 .card .stats,
 .card .commentblock {
   opacity: 0;
   -webkit-transition: opacity 0.5s;
 }
 
-/* line 280, ../sass/app1.scss */
+/* line 282, ../sass/app1.scss */
 .card:hover .stats,
 .card:hover .commentblock {
   opacity: 1;
 }
 
-/* line 285, ../sass/app1.scss */
+/* line 287, ../sass/app1.scss */
 header {
   height: 10px;
   background-color: #ff2728;
@@ -306,26 +308,26 @@ header {
   -webkit-transition: height 0.5s;
 }
 
-/* line 293, ../sass/app1.scss */
+/* line 295, ../sass/app1.scss */
 header:hover {
   height: 100px;
   background-color: rgba(0, 0, 0, 0.85);
 }
 
-/* line 298, ../sass/app1.scss */
+/* line 300, ../sass/app1.scss */
 #Page_PinDetailsPage {
   color: #ffffff;
   margin: 0px auto;
   width: 850px;
 }
-/* line 302, ../sass/app1.scss */
+/* line 304, ../sass/app1.scss */
 #Page_PinDetailsPage #details_image_container {
   width: 850px;
   height: 600px;
   overflow: hidden;
   background-color: #cccccc;
 }
-/* line 309, ../sass/app1.scss */
+/* line 311, ../sass/app1.scss */
 #Page_PinDetailsPage .description {
   font-size: 14px;
   margin-top: 15px;
@@ -333,18 +335,18 @@ header:hover {
   float: left;
   width: 700px;
 }
-/* line 317, ../sass/app1.scss */
+/* line 319, ../sass/app1.scss */
 #Page_PinDetailsPage .annotatebutton {
   float: right;
   margin-top: 15px;
 }
-/* line 322, ../sass/app1.scss */
+/* line 324, ../sass/app1.scss */
 #Page_PinDetailsPage .sourcelink {
   float: right;
   margin-top: 15px;
 }
 
-/* line 328, ../sass/app1.scss */
+/* line 330, ../sass/app1.scss */
 .commentsec {
   float: left;
   width: 100%;
@@ -352,7 +354,7 @@ header:hover {
   margin-top: 20px;
 }
 
-/* line 334, ../sass/app1.scss */
+/* line 336, ../sass/app1.scss */
 #inline-annotations {
   width: 100%;
   float: left;
@@ -360,13 +362,13 @@ header:hover {
   margin: 0;
   padding: 0;
 }
-/* line 342, ../sass/app1.scss */
+/* line 344, ../sass/app1.scss */
 #inline-annotations h2 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 0px;
 }
-/* line 347, ../sass/app1.scss */
+/* line 349, ../sass/app1.scss */
 #inline-annotations .comment {
   width: 100%;
   float: left;

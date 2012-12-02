@@ -172,9 +172,11 @@ header {
   height: 100%;
   position: fixed;
   top: 10px;
-  background: white!important;
+  background: rgba(0, 0, 0, 0.95) !important;
   z-index: 10;
-  color: #b6b1b1; }
+  color: #b6b1b1;
+  font-family: Gotham, Arial;
+  font-weight: medium; }
   #filterpanel h2 {
     font-family: Gotham, Arial;
     font-weight: medium;
