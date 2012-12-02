@@ -5,9 +5,11 @@
 
 var express = require('express')
   , routes = require('./routes/web')
-  , user = require('./routes/api/user')
-  , project = require('./routes/api/project')
-  , topic = require('./routes/api/topic')
+  , users = require('./routes/api/users')
+  , projects = require('./routes/api/projects')
+  , topics = require('./routes/api/topics')
+  , pins = require('./routes/api/pins')
+  , annotations = require('./routes/api/annotations')
   , http = require('http')
   , path = require('path');
 
@@ -42,13 +44,19 @@ app.post('/login', routes.loginPost);
 app.get('/logout', routes.logout);
 
 // api routes
-app.get('/api/users', user.list);
+app.get('/api/users', users.list);
 
-app.get('/api/projects', project.list);
-app.get('/api/activities', project.activity);
+app.get('/api/projects', projects.list);
+app.get('/api/activities', projects.activity);
 
-app.get('/api/topics', topic.list);
-app.post('/api/topics', topic.create);
+app.get('/api/topics', topics.list);
+app.post('/api/topics', topics.create);
+
+app.get('/api/pins', pins.list);
+app.post('/api/pins', pins.create);
+
+app.get('/api/annotations', annotations.list);
+app.post('/api/annotations', annotations.create);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){

@@ -93,13 +93,3 @@ exports.create = function(req, res) {
 		}
 	});
 };
-
-
-/*
- * POST update topic
- */
-exports.update = function(req, res) {
-	var id = req.query.id;
-
-
-};

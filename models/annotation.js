@@ -13,8 +13,8 @@ var mongoose = require('mongoose')
 
 var AnnotationSchema = new Schema({
 
-	comment: { type: String, required: true },
 	author: { type: Schema.ObjectId, ref: 'User', required: true },
+	comment: { type: String, required: true },
 	region: [ RegionSchema ]
 
 }, { strict: true });
