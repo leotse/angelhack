@@ -88,7 +88,6 @@ exports.create = function(req, res) {
 
 exports.addComment = function(req, res) {
 	// ensure user is logged in
-	console.log(req.session);
 	if(!helpers.ensureUserLoggedIn(req, res)) return;
 
 	var aid = req.query.aid;

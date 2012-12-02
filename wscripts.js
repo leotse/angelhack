@@ -65,18 +65,18 @@ var request = require('request');
 // test commenting //
 /////////////////////
 
-var url = 'http://localhost:3000/api/comments?aid=50bb9392ea1453c602000002'
-,	jar = request.jar()
-,	comment = { body: 'awesome pics! love it' };
+// var url = 'http://localhost:3000/api/comments?aid=50bb9392ea1453c602000002'
+// ,	jar = request.jar()
+// ,	comment = { body: 'awesome pics! love it' };
 
-login(jar, function() {
-	request({
-		method: 'post',
-		url: url,
-		jar: jar,
-		json: comment
-	}, output);
-});
+// login(jar, function() {
+// 	request({
+// 		method: 'post',
+// 		url: url,
+// 		jar: jar,
+// 		json: comment
+// 	}, output);
+// });
 
 
 /////////////////////
