@@ -23,6 +23,11 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(express.cookieParser());
+  app.use(express.session({ 
+    secret: 'pqlFNkq74RGxmjfJYIhwmw==',
+    cookie: { maxAge: 3600000 }
+  }));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -32,6 +37,9 @@ app.configure('development', function(){
 
 // web routes
 app.get('/', routes.index);
+app.get('/login', routes.login);
+app.post('/login', routes.loginPost);
+app.get('/logout', routes.logout);
 
 // api routes
 app.get('/api/users', user.list);

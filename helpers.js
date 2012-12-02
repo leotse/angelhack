@@ -39,7 +39,7 @@ module.exports.sendError = function(res, code, err) {
 	// build and send api response
 	var apiResponse = {};
 	apiResponse.meta = { code: code };
-	apiResponse.error = message;
+	apiResponse.error = err;
 
 	res.send(apiResponse);
 };

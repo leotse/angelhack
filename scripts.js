@@ -11,16 +11,17 @@ var Models = require('./models')
 // test user save //
 ////////////////////
 
-// var user = new User();
-// user.name = "Leo Tse";
-// user.email = "leotse1983@gmail.com";
-// user.save(function(err, saved) {
-// 	if(err) console.log(err);
-// 	else { 
-// 		console.log('saved user');
-// 		console.log(saved);
-// 	}
-// });
+var user = new User();
+user.username = "lanny";
+user.email = "lanny@pixelsmashing.com";
+user.picture = "http://profile.ak.fbcdn.net/hprofile-ak-snc7/c26.65.325.325/s160x160/389333_10150361381135983_710068872_n.jpg";
+user.save(function(err, saved) {
+	if(err) console.log(err);
+	else { 
+		console.log('saved user');
+		console.log(saved);
+	}
+});
 
 
 ///////////////////////
