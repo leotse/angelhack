@@ -54,6 +54,7 @@ exports.activity = function(req, res) {
 
 	Project.findById(id, function(err, project) {
 		if(err) helpers.sendError(res, 500, err);
+		else if(!project) helpers.sendResult(res, []);
 		else {
 			Topic
 			.where('_id').in(project.topics)
@@ -68,11 +69,9 @@ exports.activity = function(req, res) {
 					// generate activty feed
 					var activities = [];
 					_.each(projects, function(project) {
-						console.log(project.pins);
 						activities = activities.concat(project.pins);
 					});
 
-					console.log(activities);
 					helpers.sendResult(res, activities);
 				}
 			});
