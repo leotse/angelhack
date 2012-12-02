@@ -1,0 +1,307 @@
+/* line 11, ../sass/app1.scss */
+body {
+  background: black;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 17, ../sass/app1.scss */
+.card {
+  display: inline-block;
+  margin: 5px;
+  position: relative;
+  font-family: Gotham, Arial;
+  font-weight: medium;
+}
+/* line 23, ../sass/app1.scss */
+.card .stats {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 144px;
+  height: 28px;
+  line-height: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+/* line 34, ../sass/app1.scss */
+.card .stats div {
+  display: inline-block;
+  padding-left: 20px;
+  margin: 0px 8px 0px 8px;
+  line-height: 28px;
+  height: 28px;
+}
+/* line 40, ../sass/app1.scss */
+.card .stats div.comments {
+  background: url("../img/card-comments.png") no-repeat center left;
+}
+/* line 43, ../sass/app1.scss */
+.card .stats div.annotations {
+  background: url("../img/card-annotations.png") no-repeat center left;
+}
+/* line 46, ../sass/app1.scss */
+.card .stats div.likes {
+  background: url("../img/card-likes.png") no-repeat center left;
+}
+/* line 51, ../sass/app1.scss */
+.card .commentblock {
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-size: 13px;
+}
+/* line 62, ../sass/app1.scss */
+.card .commentblock ol {
+  margin: 0;
+  padding: 0;
+  width: -webkit-calc(100% - 48px);
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 68, ../sass/app1.scss */
+.card .commentblock ol li {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 80px;
+  list-style: none;
+}
+/* line 75, ../sass/app1.scss */
+.card .commentblock ol li .body {
+  margin-top: 10px;
+}
+/* line 78, ../sass/app1.scss */
+.card .commentblock ol li .info {
+  height: 20px;
+  margin-top: 8px;
+}
+/* line 81, ../sass/app1.scss */
+.card .commentblock ol li .info div {
+  height: 20px !important;
+  display: block;
+  float: left;
+  line-height: 20px;
+  overflow: hidden;
+  color: #dddddd;
+  margin-right: 5px;
+}
+/* line 93, ../sass/app1.scss */
+.card .commentblock .previous {
+  background: url("../img/commentnav-back.png") no-repeat center center;
+  width: 20px;
+  height: 80px;
+  display: inline-block;
+}
+/* line 99, ../sass/app1.scss */
+.card .commentblock .next {
+  background: url("../img/commentnav-forward.png") no-repeat center center;
+  width: 20px;
+  height: 80px;
+  display: inline-block;
+}
+/* line 107, ../sass/app1.scss */
+.card .narrowcard {
+  width: 250px;
+  height: 320px;
+  background: white;
+}
+/* line 113, ../sass/app1.scss */
+.card .widecard {
+  width: 500px;
+  height: 320px;
+  background: white;
+}
+/* line 119, ../sass/app1.scss */
+.card .shortcard {
+  width: 250px;
+  height: 160px;
+  background: white;
+}
+
+/* line 129, ../sass/app1.scss */
+.card .stats,
+.card .commentblock {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+}
+
+/* line 136, ../sass/app1.scss */
+.card:hover .stats,
+.card:hover .commentblock {
+  opacity: 1;
+}
+
+/* line 141, ../sass/app1.scss */
+.cardset {
+  margin-top: 5px;
+}
+
+/* line 144, ../sass/app1.scss */
+header {
+  color: #ffffff;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  overflow: hidden;
+}
+/* line 152, ../sass/app1.scss */
+header .back {
+  background: url("../img/logo-small.png") no-repeat center left;
+  padding-left: 40px;
+  text-transform: uppercase;
+  height: 27px;
+  line-height: 27px;
+  font-family: comfortaa, arial;
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+}
+/* line 163, ../sass/app1.scss */
+header h1 {
+  font-size: 24px;
+  font-family: Gotham, Arial;
+  font-weight: medium;
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+}
+/* line 172, ../sass/app1.scss */
+header nav {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-family: Gotham, Arial;
+  font-weight: medium;
+  font-size: 15px;
+}
+/* line 179, ../sass/app1.scss */
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 182, ../sass/app1.scss */
+header nav ul li {
+  display: inline-block;
+  border-right: 1px solid #ffffff;
+  padding-right: 8px;
+  padding-left: 6px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: top;
+}
+/* line 190, ../sass/app1.scss */
+header nav ul li a, header nav ul li span {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: top;
+  color: #eeeeee;
+  text-decoration: none;
+}
+/* line 198, ../sass/app1.scss */
+header nav ul li a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+/* line 203, ../sass/app1.scss */
+header nav ul li:first-child {
+  border-right: none;
+  padding-right: 0px;
+}
+/* line 207, ../sass/app1.scss */
+header nav ul li:last-child {
+  border-right: none;
+  padding-right: 0px;
+}
+/* line 211, ../sass/app1.scss */
+header nav ul .profilepic {
+  display: inline-block;
+}
+
+/* line 219, ../sass/app1.scss */
+#filterpanel {
+  padding: 20px;
+  width: 210px;
+  height: 100%;
+  position: fixed;
+  top: 10px;
+  background: white!important;
+  z-index: 10;
+  color: #b6b1b1;
+}
+/* line 228, ../sass/app1.scss */
+#filterpanel h2 {
+  font-family: Gotham, Arial;
+  font-weight: medium;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+/* line 236, ../sass/app1.scss */
+#filterpanel .toggle {
+  font-family: Gotham, Arial;
+  font-weight: medium;
+  position: absolute;
+  top: 0;
+  right: -32px;
+  width: 32px;
+  border-left: 2px solid #404040;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding-bottom: 50px;
+  padding-top: 30px;
+}
+/* line 247, ../sass/app1.scss */
+#filterpanel .toggle h1 {
+  -webkit-transform: rotate(90deg);
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+/* line 259, ../sass/app1.scss */
+#filterpanel {
+  left: -250px;
+  -webkit-transition: left 0.5s;
+}
+
+/* line 263, ../sass/app1.scss */
+#filterpanel:hover {
+  left: 0;
+}
+
+/* line 268, ../sass/app1.scss */
+.card .stats,
+.card .commentblock {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+}
+
+/* line 275, ../sass/app1.scss */
+.card:hover .stats,
+.card:hover .commentblock {
+  opacity: 1;
+}
+
+/* line 280, ../sass/app1.scss */
+header {
+  height: 10px;
+  background-color: #ff2728;
+  -webkit-transition: background-color 2s;
+  -webkit-transition: height 0.5s;
+}
+
+/* line 288, ../sass/app1.scss */
+header:hover {
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.85);
+}

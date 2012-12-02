@@ -102,13 +102,14 @@
 			<span data-bind="text: Title"></span>
 			<div id="details_image_container">
 				<img i data-bind="attr:{src:Picture}" id="details_image" style="height:600px; width:850px;" />
+				<ul id="annotations" class="clearfix" data-bind="template: {name:'annotationOverlayTemplate', foreach:Annotations}"></ul>
 			</div>
 			<input type="button" data-bind="{click:InitiateAddAnnotation}" value="Add Annotation"></input>
 			
 			<a data-bind="attr:{href:Url}" target="_blank">Source</a>
 			
 			<h2>Comments</h2>
-			<ul id="annotations" class="clearfix" data-bind="template: {name:'annotationTemplate', foreach:Annotations}"></ul>
+			<ul id="inline-annotations" class="clearfix" data-bind="template: {name:'annotationTemplate', foreach:Annotations}"></ul>
 			
 			<div id="add-annotation-dialog" title="Add Annotation">
 	            <p>
@@ -116,7 +117,6 @@
 	              <input id="add-annotation-dialog-text" />
 	            </p>
 	          </div>
-          
 		</div>
 		
     </div> <!-- /container -->
@@ -210,12 +210,25 @@
 	</script>
 	
 	<script id="annotationTemplate" type="text/html">
-		<div class="box col3" data-bind="click: OnClick">
+		<div class="box col3" data-bind="click: OnClick" >
 			<div class="info">
 				<h2 data-bind="text: body"></h2>
 				<div class="desc" data-bind="text: body"></div>
 			</div>
 		</div>
+	</script>
+	
+	<script id="annotationOverlayTemplate" type="text/html">
+		
+		<!-- ko if: region != null --> 
+		<div class="annotationOverlay" data-bind="click: OnClick, attr :{'data-coord-x': region.x, 'data-coord-y': region.y}">
+		
+			<div class="info">
+				<h2 data-bind="text: body"></h2>
+				<div class="desc" data-bind="text: body"></div>
+			</div>
+		</div>
+		<!-- /ko -->
 	</script>
 	
   </body>
