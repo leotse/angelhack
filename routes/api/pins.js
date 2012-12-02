@@ -17,6 +17,11 @@ exports.list = function(req, res){
 		return;
 	}
 
+	// paging
+	var page = req.query.page || 1
+	,	limit = req.query.limit || 10
+	,	skip = (page - 1) * limit;
+
 	Topic
 	.findOne(tid, function(err, topic) {
 		if(err) helpers.sendError(res, 500, err);
@@ -26,6 +31,8 @@ exports.list = function(req, res){
 			Pin
 			.where('_id').in(topic.pins)
 			.sort({ '$natural': -1 })
+			.limit(limit)
+			.skip(skip)
 			.populate('author')
 			.exec(function(err, pins) {
 				if(err) helpers.sendError(res, 500, err);
