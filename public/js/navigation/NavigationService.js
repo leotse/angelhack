@@ -12,7 +12,7 @@ NavigationService = {
 
 $.address.change(function(event) {  
     
-    console.log(event);
+    //console.log(event);
     
     pathParams = event.path.split("-");
     

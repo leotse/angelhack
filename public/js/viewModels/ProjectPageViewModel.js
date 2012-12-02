@@ -4,13 +4,13 @@ var ProjectPageViewModel = {
 	FeaturedTopics : ko.observableArray([]),
 	Activities : ko.observableArray([]),
 	
-	Init : function(params) {
+	Init : function(param) {
 		
 		ProjectPageViewModel.FeaturedTopics([]);
 		ProjectPageViewModel.Activities([]);
 		
 		// TODO : Replace hardcoded id
-		Data.DataService.GetProjectDetails(params.id, function(data){
+		Data.DataService.GetProjectDetails(param, function(data){
 			ProjectPageViewModel.FeaturedTopics(data.topics);
 			
 			$("#Page_PinsPage .assetsContainer").masonry({
@@ -22,11 +22,12 @@ var ProjectPageViewModel = {
 			
 		});
 		
+		/*
 		// TODO : Replace hardcoded id
-		Data.DataService.GetProjectActivity(params.id, function(data){
+		Data.DataService.GetProjectActivity(param, function(data){
 			ProjectPageViewModel.Activities(data);
 		});
-		
+		*/
 		
 	}
 }
