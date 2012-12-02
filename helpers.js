@@ -1,3 +1,4 @@
+var self = module.exports;
 
 ////////////////////
 // Common Helpers //
@@ -43,3 +44,15 @@ module.exports.sendError = function(res, code, err) {
 
 	res.send(apiResponse);
 };
+
+
+// check if user is logged in
+module.exports.ensureUserLoggedIn = function(req, res) {
+	if(req && req.session && req.session.uid) {
+		return true;
+	}
+
+	// user not logged in - redirect to error screen
+	self.sendError(res, 500, 'not logged in');
+	return false;
+}

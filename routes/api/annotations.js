@@ -42,6 +42,9 @@ exports.list = function(req, res){
  */
 
 exports.create = function(req, res) {
+	// ensure user is logged in
+	if(!helpers.ensureUserLoggedIn(req, res)) return;
+
 	var pid = req.query.pid
 	if(!pid) {
 		helpers.sendError(res, 500, 'missing pid');
@@ -63,14 +66,14 @@ exports.create = function(req, res) {
 			,	annotation = new Annotation(body);
 
 			annotation.author = uid;
-			annotation.save(function(err, saved) {
+			annotation.save(function(err, savedAnnotation) {
 				if(err) helpers.sendError(res, 500, err);
 				else { 
 
-					pin.annotations.addToSet(saved._id);
+					pin.annotations.addToSet(savedAnnotation._id);
 					pin.save(function(err, saved) {
 						if(err) helpers.sendError(res, 500, err);
-						else helpers.sendResult(res, saved);
+						else helpers.sendResult(res, savedAnnotation);
 					});
 				}
 			});
@@ -84,6 +87,10 @@ exports.create = function(req, res) {
  */
 
 exports.addComment = function(req, res) {
+	// ensure user is logged in
+	console.log(req.session);
+	if(!helpers.ensureUserLoggedIn(req, res)) return;
+
 	var aid = req.query.aid;
 	if(!aid) {
 		helpers.sendError(res, 500, 'missing annotation id');
@@ -95,8 +102,10 @@ exports.addComment = function(req, res) {
 		else {
 
 			var body = req.body
-			,	comment = new Comment(body);
+			,	comment = new Comment(body)
+			,	uid = req.session.uid;
 
+			comment.author = uid;
 			annotation.comments.push(comment);
 			annotation.save(function(err, saved) {
 				if(err) helpers.sendError(res, 500, err);
