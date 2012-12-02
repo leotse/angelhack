@@ -16,6 +16,25 @@ Data.DataService = (function(){
 	
 	var USERS_SERVICE = DATA_SERVICE_BASE + "users";
 	
+	function getCoords()
+	{
+		$.each("div.annotationOverlay", function(i)
+		{
+				
+			var posX = $(i).attr("data-coord-x");
+		    var posY = $(i).attr("data-coord-y");
+			
+			var objPos = {"x":posX,"y":posY};
+			
+			$(i).css({"x":posX,"y":posY});
+
+		});
+
+	}
+
+	getCoords();
+
+
 	// PRIVATE METHODS
 	CreateServiceParamsObj = function(options) {
 		
