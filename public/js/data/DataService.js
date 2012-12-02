@@ -162,11 +162,49 @@ Data.DataService = (function(){
 		});
 	}
 	
+	
+	// CREATION
+	
+	CreatePin = function(data, callback) {
+		
+		var params = CreateServiceParamsObj(data);
+		
+		var url = PIN_SERVICE;
+		
+		DoServiceCall(url, "POST", params, function(data){
+			if(data == null)
+				callback(null);
+				
+			var result = Data.ModelFactory.CreatePinModel(data.response);
+			
+			callback(result);
+		});
+	}
+	
+	CreateAnnotation = function(data, callback) {
+		
+		var params = CreateServiceParamsObj(data);
+		
+		var url = ANNOTATION_SERVICE;
+		
+		DoServiceCall(url, "POST", params, function(data){
+			if(data == null)
+				callback(null);
+				
+			var result = Data.ModelFactory.CreatePinModel(data.response);
+			
+			callback(result);
+		});
+	}
+	
 	return {
 		GetAllProjects : GetAllProjects,
 		GetProjectActivity: GetProjectActivity,
 		GetProjectDetails : GetProjectDetails,
-		GetTopicDetails : GetTopicDetails
+		GetTopicDetails : GetTopicDetails,
+		CreatePin : CreatePin,
+		CreateAnnotation : CreateAnnotation
+		
 	}
 	
 }());

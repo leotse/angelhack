@@ -1,18 +1,17 @@
 var HomepageViewModel = {
 	Display: ko.observable(false),
 	
-	FeaturedTopics : ko.observableArray([]),
-	Activity : ko.observableArray([]),
+	Projects : ko.observableArray([]),
 	
 	Init : function(params) {
 		
-		HomepageViewModel.FeaturedTopics([]);
+		HomepageViewModel.Projects([]);
 		
 		// TODO : Replace hardcoded id
-		Data.DataService.GetProjectDetails("50ba8a1e9cb44f9309000003", function(data){
-			HomepageViewModel.FeaturedTopics(data.topics);
+		Data.DataService.GetAllProjects(function(data){
+			HomepageViewModel.Projects(data);
 			
-			$("#Page_PinsPage .assetsContainer").masonry({
+			$("#Page_Homepage .assetsContainer").masonry({
 				itemSelector: '.box',
 				animationOptions: {
 					duration: 400
@@ -20,5 +19,6 @@ var HomepageViewModel = {
 			});
 			
 		});
+		
 	}
 }

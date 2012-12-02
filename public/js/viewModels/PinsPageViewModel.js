@@ -8,7 +8,7 @@ var PinsPageViewModel = {
 		PinsPageViewModel.Pins([]);
 		
 		// TODO : Replace hardcoded id
-		Data.DataService.GetTopicDetails("50ba7a453a3d130c08000003", function(data){
+		Data.DataService.GetTopicDetails(params.id, function(data){
 			PinsPageViewModel.Pins(data.pins);
 			
 			// TODO : Apply masonry on the pins page
@@ -19,6 +19,11 @@ var PinsPageViewModel = {
 					duration: 400
 				}
 			});
+			
+			$('#btn_addPin').click(function () {
+		        $('#dialog').dialog('open');
+		        return false;
+		    });
 		});
 	}
 }

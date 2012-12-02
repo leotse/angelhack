@@ -6,7 +6,7 @@
 		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+		
 		<title>eyeD8.in</title>
 		<meta name="description" content="" />
 		<meta name="author" content="AngelHack" />
@@ -41,10 +41,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">eyeD8.in</a>
+          <a class="brand" href="#" onclick="NavigationService.Navigate(NavigationConstants.PAGE_HOMEPAGE)">eyeD8.in</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li onclick="NavigationService.Navigate(NavigationConstants.PAGE_HOMEPAGE)"><a href="#">Home</a></li>
+              <li onclick="NavigationService.Navigate(NavigationConstants.PAGE_PROJECT, {id: '50ba8a1e9cb44f9309000003'})"><a href="#">Home</a></li>
               <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_PINSPAGE)">Pins</a></li>
               <li><a onclick="NavigationService.Navigate(NavigationConstants.PAGE_DETAILSPAGE)">Details</a></li>
               <!--
@@ -74,20 +74,33 @@
 
     <div class="appContainer" style="visibility: hidden">
     	
-	  	<div id="Page_Homepage" data-bind="visible: Display">
-			Homepage
-			<div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
+    	
+    	<div id="Page_Homepage" data-bind="visible: Display">
+			<h2>Homepage</h2>
+			
+			<div id="assetContainer" class="clearfix" data-bind="template: {name:'projectTemplate', foreach:Projects}">
 			</div>
 		</div>
 		
+	  	<div id="Page_Project" data-bind="visible: Display">
+			<h2 data-bin="text:Title"></h2>
+			<div id="assetContainer" class="clearfix" data-bind="template: {name:'featuredTopicTemplate', foreach:FeaturedTopics}">
+			</div>
+			<ul id="activities" class="clearfix" data-bind="template: {name:'activityTemplate', foreach:Activities}">
+			</ul>
+		</div>
+		
 		<div id="Page_PinsPage" data-bind="visible: Display">
-			PinsPage
 			<div id="assetContainer" class="clearfix" data-bind="template: {name:'pinTemplate', foreach:Pins}">
 			</div>
 		</div>
 		
 		<div id="Page_PinDetailsPage" data-bind="visible: Display">
-			Details
+			<div id="details_image_container">
+				<img id="details_image" src="http://pcdn.500px.net/19589689/0d499b08eef09531752bd64c0b52c827ffd3a04f/4.jpg" style="height:600px; width:850px;" />
+			</div>
+			<h2>Comments</h2>
+			<ul id="annotations" class="clearfix" data-bind="template: {name:'annotationTemplate', foreach:Annotations}"></ul>
 		</div>
 		
     </div> <!-- /container -->
@@ -95,8 +108,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     
 	<!-- Library Scripts -->
-	<script src="js/libs/Namespace.js"></script>
 	<script src="js/libs/jquery-1.7.1.min.js"></script>
+	<script src="js/libs/Namespace.js"></script>
+	<script src="js/libs/jquery.address-1.5.min.js"></script>
 	<script src="js/libs/knockout.min.js" ></script>
 	<script src="js/libs/jquery.masonry.min.js"></script>
 	<script src="js/libs/jquery.infinitescroll.min.js"></script>
@@ -108,12 +122,15 @@
 	
 	<!-- ViewModels -->
 	<script src="js/viewModels/HomepageViewModel.js"></script>
+	<script src="js/viewModels/ProjectPageViewModel.js"></script>
 	<script src="js/viewModels/PinsPageViewModel.js"></script>
 	<script src="js/viewModels/DetailsPageViewModel.js"></script>
 	
 	<!-- Navigation -->
 	<script src="js/navigation/NavigationConstants.js"></script>
 	<script src="js/navigation/NavigationService.js"></script>
+	
+	<script src="js/utils/Utilities.js"></script>
 	
 	<script src="js/App.js"></script>
 	
@@ -135,28 +152,10 @@
 		
 	</script>
 	
-	
-	
 	<!-- TEMPLATES -->
 	
-	<script id="featuredTopicTemplate" type="text/html">
-		<div class="box col3">
-			<div class="thumbnail">
-				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
-			</div>
-			<div class="info">
-				<h2 data-bind="text: label"></h2>
-				<div class="desc" data-bind="text: label"></div>
-			</div>
-		</div>
-	</script>
-	
-	
-	<script id="pinTemplate" type="text/html">
-		<div class="box col3">
-			<div class="thumbnail">
-				<!--<img data-bind="attr: {src: ThumbnailUpload}">-->
-			</div>
+	<script id="projectTemplate" type="text/html">
+		<div class="box col3" data-bind="click: OnClick">
 			<div class="info">
 				<h2 data-bind="text: title"></h2>
 				<div class="desc" data-bind="text: title"></div>
@@ -164,6 +163,43 @@
 		</div>
 	</script>
 	
+	<script id="featuredTopicTemplate" type="text/html">
+		<div class="box col3" data-bind="click: OnClick">
+			<div class="info">
+				<h2 data-bind="text: label"></h2>
+				<div class="desc" data-bind="text: label"></div>
+			</div>
+		</div>
+	</script>
+	
+	<script id="activityTemplate" type="text/html">
+		<li class="box col3" data-bind="click: OnClick">
+			<div class="info">
+				<h2 data-bind="text: title"></h2>
+				<div class="desc" data-bind="text: title"></div>
+				<div class="desc" data-bind="text: url"></div>
+				<img class="logo" data-bind="attr:{src: picture}"></img>
+			</div>
+		</li>
+	</script>
+	
+	<script id="pinTemplate" type="text/html">
+		<div class="box col3" data-bind="click: OnClick">
+			<div class="info">
+				<h2 data-bind="text: title"></h2>
+				<div class="desc" data-bind="text: title"></div>
+			</div>
+		</div>
+	</script>
+	
+	<script id="annotationTemplate" type="text/html">
+		<div class="box col3" data-bind="click: OnClick">
+			<div class="info">
+				<h2 data-bind="text: title"></h2>
+				<div class="desc" data-bind="text: title"></div>
+			</div>
+		</div>
+	</script>
 	
   </body>
 </html>
