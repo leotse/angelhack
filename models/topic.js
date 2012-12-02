@@ -3,8 +3,7 @@
 /////////////////
 
 var mongoose = require('mongoose')
-,	Schema = mongoose.Schema
-,	PinSchema = require('./pin');
+,	Schema = mongoose.Schema;
 
 
 ////////////
@@ -18,7 +17,7 @@ var TopicSchema = new Schema({
 	logo: { type: String },
 	color: { type: String },
 	tags: [{ type: String, indexd: true }],
-	pins: [ PinSchema ]
+	pins: [{ type: Schema.ObjectId, ref: 'Pin' }],
 
 }, { strict: true });
 

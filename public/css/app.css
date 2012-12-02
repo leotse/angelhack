@@ -1,0 +1,185 @@
+/* line 2, ../sass/_global.scss */
+.navbar {
+  position: static !important;
+  margin-bottom: 20px !important;
+}
+
+/* line 8, ../sass/_global.scss */
+.card {
+  position: relative;
+}
+
+/*********************************************************************************************
+# UI-ELEMENTS
+# Styling rules for individual UI Elements
+*********************************************************************************************/
+/* line 1, ../sass/_ui-card.scss */
+.card {
+  /** GLOBAL ELEMENT SETTINGS **/
+  /** TOPIC VIEW: Shown on the Dashboard of the service, NOT in a Board View **/
+  /** SUMMARY VIEW: Shown in a Board View **/
+}
+/* line 4, ../sass/_ui-card.scss */
+.card .assetvisual {
+  margin-bottom: 10px;
+  border: 2px solid #797979;
+  box-sizing: border-box;
+  text-align: center;
+}
+/* line 14, ../sass/_ui-card.scss */
+.card .assetinfo .infoitem {
+  display: inline-block;
+  text-align: center;
+}
+/* line 17, ../sass/_ui-card.scss */
+.card .assetinfo .infoitem .icon {
+  background-color: #797979;
+  width: 24px;
+  height: 24px;
+}
+/* line 22, ../sass/_ui-card.scss */
+.card .assetinfo .infoitem .count {
+  font-size: 13px;
+}
+/* line 39, ../sass/_ui-card.scss */
+.card .assetinfo .set1 {
+  display: inline-block;
+  width: 49%;
+  text-align: left;
+  vertical-align: top;
+}
+/* line 44, ../sass/_ui-card.scss */
+.card .assetinfo .set1 .icon {
+  display: inline-block;
+}
+/* line 47, ../sass/_ui-card.scss */
+.card .assetinfo .set1 .value {
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  vertical-align: top;
+}
+/* line 54, ../sass/_ui-card.scss */
+.card .assetinfo .set2 {
+  display: inline-block;
+  width: 49%;
+  text-align: right;
+  vertical-align: top;
+}
+/* line 65, ../sass/_ui-card.scss */
+.card .comments .commentlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 69, ../sass/_ui-card.scss */
+.card .comments .commentlist .comment {
+  margin-bottom: 5px;
+}
+/* line 72, ../sass/_ui-card.scss */
+.card .comments .commentlist .comment .profilepic {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #797979;
+  vertical-align: top;
+}
+/* line 79, ../sass/_ui-card.scss */
+.card .comments .commentlist .comment .body {
+  display: inline-block;
+  width: -webkit-calc(100% - 60px);
+  vertical-align: top;
+}
+/* line 92, ../sass/_ui-card.scss */
+.card.topicview {
+  display: inline-block;
+  /*width:$categoryviewcard-width;
+  height:$categoryviewcard-height;*/
+  background-color: #c0c0c0;
+}
+/* line 101, ../sass/_ui-card.scss */
+.card.topicview .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+/* line 108, ../sass/_ui-card.scss */
+.card.topicview .assetvisual {
+  width: 100%;
+}
+/* line 112, ../sass/_ui-card.scss */
+.card.topicview .assetvisual img {
+  width: 100%;
+}
+/* line 118, ../sass/_ui-card.scss */
+.card.topicview .activities {
+  font-size: 15px;
+}
+/* line 126, ../sass/_ui-card.scss */
+.card.topicview .activities .users {
+  margin: 10px 0px 0px 0px;
+  padding: 0;
+}
+/* line 129, ../sass/_ui-card.scss */
+.card.topicview .activities .users .user {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #525252;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 136, ../sass/_ui-card.scss */
+.card.topicview .activities .users .user .profilepic {
+  display: inline-block;
+}
+/* line 143, ../sass/_ui-card.scss */
+.card.topicview .activities .lastactivity {
+  text-align: right;
+  float: right;
+  font-weight: bold;
+}
+/* line 152, ../sass/_ui-card.scss */
+.card.summaryview {
+  width: 260px;
+  height: auto;
+  background-color: #c0c0c0;
+}
+/* line 170, ../sass/_ui-card.scss */
+.card.summaryview .description {
+  font-size: 15px;
+}
+/* line 175, ../sass/_ui-card.scss */
+.card.summaryview .actions {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: -webkit-calc(100% - 20px);
+  top-radius: 5px 5px 0px 0px;
+  opacity: 0;
+}
+/* line 188, ../sass/_ui-card.scss */
+.card.summaryview .actions .action {
+  width: 22%;
+  height: 100%;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0px 2px 0px 2px;
+  vertical-align: middle;
+}
+/* line 195, ../sass/_ui-card.scss */
+.card.summaryview .actions .action span {
+  color: #ffffff;
+  font-size: 11px;
+}
+/* line 231, ../sass/_ui-card.scss */
+.card.fullview {
+  width: 920px;
+  min-height: 790px;
+  background-color: blue;
+}
