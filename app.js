@@ -14,6 +14,10 @@ var express = require('express')
   , path = require('path');
 
 // read environment
+var isProd = process.argv.indexOf('-prod') >= 0;
+if(isProd) { 
+  process.env.PORT = 5000;
+}
 
 // app configuration
 var app = express();
