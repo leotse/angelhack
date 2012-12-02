@@ -61,6 +61,7 @@ app.post('/api/pins', pins.create);
 
 app.get('/api/annotations', annotations.list);
 app.post('/api/annotations', annotations.create);
+app.post('/api/comments', annotations.addComment);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){

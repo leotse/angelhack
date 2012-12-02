@@ -4,7 +4,8 @@
 
 var mongoose = require('mongoose')
 ,	Schema = mongoose.Schema
-,	RegionSchema = mongoose.RegionSchema;
+,	RegionSchema = mongoose.RegionSchema
+,	CommentSchema = mongoose.CommentSchema;
 
 
 ////////////
@@ -14,7 +15,7 @@ var mongoose = require('mongoose')
 var AnnotationSchema = new Schema({
 
 	author: { type: Schema.ObjectId, ref: 'User', required: true },
-	comment: { type: String, required: true },
+	comments: [ CommentSchema ],
 	region: [ RegionSchema ]
 
 }, { strict: true });

@@ -3,6 +3,7 @@ var self = exports
 ,	Models = require('../../models')
 ,	Pin = Models.Pin
 ,	Annotation = Models.Annotation
+,	Comment = Models.Comment
 ,	helpers = require('../../helpers');
 
 
@@ -18,7 +19,7 @@ exports.list = function(req, res){
 	}
 
 	Pin
-	.findOne(pid, function(err, pin) {
+	.findById(pid, function(err, pin) {
 		if(err) helpers.sendError(res, 500, err);
 		else if(!pin) helpers.sendError(res, 500, 'pin not found');
 		else {
@@ -27,9 +28,9 @@ exports.list = function(req, res){
 			.where('_id').in(pin.annotations)
 			.sort({ '$natural': -1 })
 			.populate('author')
-			.exec(function(err, pins) {
+			.exec(function(err, annotations) {
 				if(err) helpers.sendError(res, 500, err);
-				else helpers.sendResult(res, pins);
+				else helpers.sendResult(res, annotations);
 			});
 		}
 	});
@@ -65,6 +66,33 @@ exports.create = function(req, res) {
 						else helpers.sendResult(res, saved);
 					});
 				}
+			});
+		}
+	});
+};
+
+/*
+ * POST add comment
+ */
+
+exports.addComment = function(req, res) {
+	var aid = req.query.aid;
+	if(!aid) {
+		helpers.sendError(res, 500, 'missing annotation id');
+		return;
+	}
+
+	Annotation.findById(aid, function(err, annotation) {
+		if(err) helpers.sendError(res, 500, err);
+		else {
+
+			var body = req.body
+			,	comment = new Comment(body);
+
+			annotation.comments.push(comment);
+			annotation.save(function(err, saved) {
+				if(err) helpers.sendError(res, 500, err);
+				else helpers.sendResult(res, saved);
 			});
 		}
 	});

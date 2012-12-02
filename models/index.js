@@ -23,6 +23,7 @@ var TopicSchema = require('./topic');
 var PinSchema = require('./pin');
 var AnnotationSchema = require('./annotation');
 var RegionSchema = require('./region');
+var CommentSchema = require('./comment');
 
 
 // register models
@@ -32,6 +33,7 @@ mongoose.model('Topic', TopicSchema);
 mongoose.model('Pin', PinSchema);
 mongoose.model('Annotation', AnnotationSchema);
 mongoose.model('Region', RegionSchema);
+mongoose.model('Comment', CommentSchema);
 
 
 // export models
@@ -41,3 +43,4 @@ module.exports.Topic = mongoose.model('Topic');
 module.exports.Pin = mongoose.model('Pin');
 module.exports.Annotation = mongoose.model('Annotation');
 module.exports.Region = mongoose.model('Region');
+module.exports.Comment = mongoose.model('Comment');

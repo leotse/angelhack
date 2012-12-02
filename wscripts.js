@@ -56,6 +56,18 @@ var request = require('request');
 // }, output);
 
 
+var url = 'http://localhost:3000/api/comments?aid=50badcf8bc43ac3c11000001'
+,	comment = {
+		author: '50b93b2e00b62ab60c000001',
+		body: 'I do not like this logo'
+	};
+
+request({
+	method: 'post',
+	url: url,
+	form: comment
+}, output);
+
 
 // helper
 function output(err, res, body) {

@@ -56,7 +56,7 @@ exports.get = function(req, res) {
 	var id = req.query.id;
 
 	Pin
-	.where('_id', id)
+	.findOne({'_id': id})
 	.populate('annotations')
 	.exec(function(err, pin) {
 		if(err) helpers.sendError(res, 500, err);
