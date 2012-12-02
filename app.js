@@ -43,9 +43,12 @@ app.get('/logout', routes.logout);
 
 // api routes
 app.get('/api/users', user.list);
+
 app.get('/api/projects', project.list);
 app.get('/api/activities', project.activity);
+
 app.get('/api/topics', topic.list);
+app.post('/api/topics', topic.create);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){
